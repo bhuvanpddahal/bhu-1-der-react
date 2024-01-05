@@ -5,7 +5,7 @@ import LoginImg from '../../images/login.avif';
 
 const Auth: React.FC = () => {
     return (
-        <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-5 px-3'>
+        <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>
             <div className='flex max-w-4xl rounded-xl overflow-hidden shadow-large'>
                 <img className='hidden md:inline-block w-1/2 object-cover' src={LoginImg} alt="" />
                 <div className='w-full flex flex-col items-center pt-3 pb-5 px-5 bg-white'>
