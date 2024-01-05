@@ -10,10 +10,10 @@ const HeroPage: React.FC = () => {
             <div className='w-full'>
                 <h3 className='text-4xl leading-50px text-dark font-light'>Hello, I'm <span>Bhuvan Prasad Dahal</span> from Nepal.</h3>
                 <div className='flex items-center gap-3 mt-4'>
-                    <Link to='/auth' className='px-9 py-4 bg-white rounded-sm shadow-sm transition-bg duration-200 hover:bg-dim'>
+                    <Link to='/auth' className='px-9 py-4 bg-white rounded-sm shadow-sm transition-bg duration-300 hover:bg-dim'>
                         <Play color='#333' className='inline' /> Get Started
                     </Link>
-                    <Link to='https://www.github.com/BhuvanPdDahal' className='px-9 py-4 bg-white rounded-sm shadow-sm transition-bg duration-200 hover:bg-dim' target='_blank'>
+                    <Link to='https://www.github.com/BhuvanPdDahal' className='px-9 py-4 bg-white rounded-sm shadow-sm transition-bg duration-300 hover:bg-dim' target='_blank'>
                         <GitHub color='#333' className='inline' /> GitHub Account
                     </Link>
                 </div>

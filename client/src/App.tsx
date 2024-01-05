@@ -13,6 +13,7 @@ import Blogs from './components/Blog/Blogs';
 import Projects from './components/Project/Projects';
 import Contact from './components/Contact/Contact';
 import BlogDetails from './components/Blog/BlogDetails';
+import ProjectDetails from './components/Project/ProjectDetails';
 
 const App: React.FC = () => {
     return (
@@ -22,7 +23,10 @@ const App: React.FC = () => {
                 <Routes>
                     <Route index element={<HomePage />} />
                     <Route path='/auth' element={<Auth />} />
-                    <Route path='/projects' element={<Projects />} />
+                    <Route path='/projects/*'>
+                        <Route index element={<Projects />} />
+                        <Route path=':id' element={<ProjectDetails />} />
+                    </Route>
                     <Route path='/blog/*'>
                         <Route index element={<Blogs />} />
                         <Route path=':id' element={<BlogDetails />} />

@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
                         pathname={location.pathname}
                     />
                 </div>
-                <div onClick={() => setShowMenu(true)} className='md:hidden p-2 cursor-pointer rounded-full hover:bg-grey'>
+                <div onClick={() => setShowMenu(true)} className='md:hidden p-2 cursor-pointer rounded-full transition-bg duration-300 hover:bg-grey'>
                     <Menu color='#333' />
                 </div>
             </div>
