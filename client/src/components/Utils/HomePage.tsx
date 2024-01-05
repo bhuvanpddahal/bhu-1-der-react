@@ -1,13 +1,15 @@
 import React from 'react';
 
 import HeroPage from './HeroPage';
-import Loader from './Loader';
+import About from './About';
+import Expertise from './Expertise';
 
 const HomePage: React.FC = () => {
     return (
         <>
             <HeroPage />
-            <Loader />
+            <About />
+            <Expertise />
         </>
     )
 };

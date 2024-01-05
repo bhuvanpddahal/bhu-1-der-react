@@ -7,12 +7,15 @@ module.exports = {
         extend: {
             spacing: {
                 "1px": "1px",
+                "2px": "2px",
                 "15px": "15px",
                 "40px": "40px",
                 "50px": "50px",
                 "60px": "60px",
                 "70px": "70px",
                 "200px": "200px",
+                "300px": "250px",
+                "380px": "350px",
                 "n10px": "-10px",
                 "10p": "10%",
                 "55p": "55%",
@@ -28,6 +31,11 @@ module.exports = {
                 "primarydark": "#2b3252",
                 "secondary": "#f5793b",
                 "dim": "#d7f0fd",
+                "darktrans": "rgba(0, 0, 0, 0.5)",
+                "lin": "linear-gradient(45deg, #ddd, #eee)"
+            },
+            backgroundImage: {
+                "intro": "url('/src/images/bulb.png')",
             },
             transitionProperty: {
                 "color": "color",

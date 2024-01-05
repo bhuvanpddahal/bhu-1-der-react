@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Card from './Card';
+import { cards } from '../../data/contact';
 
 const Contact: React.FC = () => {
     return (
@@ -9,9 +10,14 @@ const Contact: React.FC = () => {
                 <h3 className='text-2xl font-medium text-center text-dark mb-1 mt-n10px'>Contact</h3>
                 <p className='text-center mb-5 text-normal font-medium'>Feel free to contact me!</p>
                 <ul className='grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 gap-5'>
-                    <Card />
-                    <Card />
-                    <Card />
+                    {cards.map((card) => (
+                        <Card
+                            name={card.name}
+                            color={card.color}
+                            text={card.text}
+                            link={card.link}
+                        />
+                    ))}
                 </ul>
             </div>
         </div>
