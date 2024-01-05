@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavLinks: React.FC = () => {
+interface NavLinksProp {
+    setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+    pathname: string;
+}
+
+const NavLinks: React.FC<NavLinksProp> = ({ setShowMenu }: NavLinksProp) => {
     return (
         <>
-            <Link to='/auth' className='text-darkgrey hover:text-normal'>Sign In</Link>
-            <Link to='/auth' className='text-darkgrey hover:text-normal'>Get Started</Link>
+            <Link onClick={() => setShowMenu(false)} to='/auth' className='transition-color duration-200 text-darkgrey hover:text-normal'>Sign In</Link>
+            <Link onClick={() => setShowMenu(false)} to='/auth' className='transition-color duration-200 text-darkgrey hover:text-normal'>Get Started</Link>
         </>
     )
 };

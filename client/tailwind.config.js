@@ -12,6 +12,7 @@ module.exports = {
                 "60px": "60px",
                 "70px": "70px",
                 "200px": "200px",
+                "n10px": "-10px",
                 "10p": "10%",
                 "55p": "55%",
             },
@@ -22,9 +23,17 @@ module.exports = {
                 "medium": "#999",
                 "normal": "#555",
                 "dark": "#222",
+                "primary": "#3d4673",
+                "primarydark": "#2b3252",
+                "secondary": "#f5793b",
+                "dim": "#d7f0fd",
+            },
+            transitionProperty: {
+                "color": "color",
+                "bg": "background-color",
             },
             minHeight: {
-                "rem": "calc(100vh - 132px)",
+                "rem": "calc(100vh - 144px)",
             },
             lineHeight: {
                 "50px": "55px",
