@@ -5,6 +5,7 @@ import {
     Route
 } from 'react-router-dom';
 
+import AlertBox from './components/Alert/AlertBox';
 import Navbar from './components/Navbar/Navbar';
 import HomePage from './components/Home/HomePage';
 import Footer from './components/Footer/Footer';
@@ -19,6 +20,7 @@ const App: React.FC = () => {
     return (
         <Router>
             <Fragment>
+                <AlertBox />
                 <Navbar />
                 <Routes>
                     <Route index element={<HomePage />} />

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Logo from '../../images/main-logo.png';
 import LoginImg from '../../images/login.avif';
 import { signup, login } from '../../actions/auth';
+import { LOGOUT } from '../../constants/auth';
+import { State } from '../../interfaces/store';
 
 const Auth: React.FC = () => {
     const location = useLocation();
@@ -22,7 +24,6 @@ const Auth: React.FC = () => {
             email,
             password
         };
-        console.log(formData);
         if(isLogin) {
             dispatch(login(formData, navigate));
         } else {
@@ -37,6 +38,12 @@ const Auth: React.FC = () => {
             navigate('/login');
         }
     };
+
+    useEffect(() => {
+        dispatch({ type: LOGOUT });
+    }, []);
+
+    const { isLoading } = useSelector((state: State) => state.auth);
 
     return (
         <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>
@@ -64,7 +71,12 @@ const Auth: React.FC = () => {
                             <label className='font-medium' htmlFor="password">Password</label>
                             <input onChange={(e) => setPassword(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' type="password" name="password" id="password" value={password} />
                         </div>
-                        <button className='w-full py-2 bg-primary text-white font-medium rounded-sm hover:bg-primarydark' type="submit">{isLogin ? 'Login' : 'Signup'}</button>
+                        <button className={`w-full py-2 bg-primary text-white font-medium rounded-sm ${isLoading ? 'cursor-not-allowed' : 'hover:bg-primarydark'}`} type="submit" disabled={isLoading}>
+                            {isLogin 
+                                ? isLoading ? 'Loggin in...' : 'Login'
+                                : isLoading ? 'Signing up...' : 'Signup'
+                            }
+                        </button>
                     </form>
                     <button onClick={handleClick} className='w-full py-2 text-sm font-medium border border-solid border-grey rounded-sm hover:bg-lightgrey'>OR {isLogin ? 'SIGNUP' : 'LOGIN'}</button>
                 </div>

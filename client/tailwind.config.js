@@ -9,6 +9,7 @@ module.exports = {
                 "1px": "1px",
                 "2px": "2px",
                 "15px": "15px",
+                "22px": "22px",
                 "40px": "40px",
                 "50px": "50px",
                 "60px": "60px",
@@ -33,6 +34,11 @@ module.exports = {
                 "dim": "#d7f0fd",
                 "darktrans": "rgba(0, 0, 0, 0.5)",
                 "lin": "linear-gradient(45deg, #ddd, #eee)"
+            },
+            fontSize: {
+                "18px": "18px",
+                "20px": "20px",
+                "22px": "22px",
             },
             backgroundImage: {
                 "intro": "url('/src/images/bulb.png')",

@@ -23,12 +23,10 @@ export const signup = (formData: FormDataProp, navigate: any) => async (dispatch
     try {
         dispatch({ type: START_LOADING, for: AUTH });
         const { data } = await api.signup(formData);
-        console.log(data);
-        
         dispatch({ type: SIGNUP, data });
         dispatch({ type: END_LOADING, for: AUTH });
         showAlert(signup_success, success, dispatch);
-        navigate('/events');
+        navigate('/');
         
     } catch (error) {
         dispatch({ type: END_LOADING, for: AUTH });
@@ -43,7 +41,7 @@ export const login = (formData: FormDataProp, navigate: any) => async (dispatch:
         dispatch({ type: LOGIN, data });
         dispatch({ type: END_LOADING, for: AUTH });
         showAlert(login_success, success, dispatch);
-        navigate('/events');
+        navigate('/');
 
     } catch (error) {
         dispatch({ type: END_LOADING, for: AUTH });
