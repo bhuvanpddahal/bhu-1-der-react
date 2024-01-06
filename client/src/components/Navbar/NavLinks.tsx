@@ -13,8 +13,8 @@ const NavLinks: React.FC<NavLinksProp> = ({ setShowMenu }: NavLinksProp) => {
 
     return (
         <>
-            <Link onClick={() => setShowMenu(false)} to='/login' className='transition-color duration-200 text-darkgrey hover:text-normal'>Sign In</Link>
-            <Link onClick={() => setShowMenu(false)} to='/get-started' className='transition-color duration-200 text-darkgrey hover:text-normal'>Get Started</Link>
+            <Link onClick={() => setShowMenu(false)} to='/login' className='transition-color duration-200 text-darkgrey hover:text-normal'>{user ? 'Log Out' : 'Sign In'}</Link>
+            <Link onClick={() => setShowMenu(false)} to={`${user ? '/' : '/get-started'}`} className={`transition-color duration-200 ${user ? 'text-primary hover:text-primarydark' : 'text-darkgrey hover:text-normal'}`}>{user ? user?.username : 'Get Started'}</Link>
         </>
     )
 };
