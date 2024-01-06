@@ -58,6 +58,5 @@ export const loginWithToken = () => async (dispatch: Dispatch<AuthAction | Alert
 
     } catch (error) {
         dispatch({ type: END_LOADING, for: AUTH });
-        handleError(error, dispatch);
     }
 };

@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
-import { Menu, X } from 'react-feather';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'react-feather';
 
 import NavItems from './NavItems';
 import NavLinks from './NavLinks';
 import Logo from '../../images/main-logo.png';
+import { State } from '../../interfaces/store';
+import { loginWithToken } from '../../actions/auth';
 
 const Navbar: React.FC = () => {
     const location = useLocation();
+    const dispatch: any = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
+    const { user } = useSelector((state: State) => state.auth);
+
+    useEffect(() => {
+        dispatch(loginWithToken());
+    }, []);
 
     return (
         <nav className='pl-3 pr-10 py-3 bg-lightgrey'>
@@ -20,12 +29,14 @@ const Navbar: React.FC = () => {
                     <NavItems
                         setShowMenu={setShowMenu}
                         pathname={location.pathname}
+                        user={user}
                     />
                 </ul>
                 <div className='hidden md:flex gap-4'>
                     <NavLinks
                         setShowMenu={setShowMenu}
                         pathname={location.pathname}
+                        user={user}
                     />
                 </div>
                 <div onClick={() => setShowMenu(true)} className='md:hidden p-2 cursor-pointer rounded-full transition-bg duration-300 hover:bg-grey'>
@@ -41,11 +52,13 @@ const Navbar: React.FC = () => {
                     <NavItems
                         setShowMenu={setShowMenu}
                         pathname={location.pathname}
+                        user={user}
                     />
                     <li className='w-full flex justify-between'>
                         <NavLinks
                             setShowMenu={setShowMenu}
                             pathname={location.pathname}
+                            user={user}
                         />
                     </li>
                 </ul>

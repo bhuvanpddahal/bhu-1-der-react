@@ -6,8 +6,9 @@ import {
 } from 'react-router-dom';
 
 import AlertBox from './components/Alert/AlertBox';
-import Navbar from './components/Navbar/Navbar';
 import HomePage from './components/Home/HomePage';
+import Navbar from './components/Navbar/Navbar';
+import Admin from './components/Admin/Admin';
 import Footer from './components/Footer/Footer';
 import Auth from './components/Auth/Auth';
 import Blogs from './components/Blog/Blogs';
@@ -26,6 +27,9 @@ const App: React.FC = () => {
                     <Route index element={<HomePage />} />
                     <Route path='/login' element={<Auth />} />
                     <Route path='/get-started' element={<Auth />} />
+                    <Route path='/admin/*'>
+                        <Route index element={<Admin />} />
+                    </Route>
                     <Route path='/projects/*'>
                         <Route index element={<Projects />} />
                         <Route path=':id' element={<ProjectDetails />} />

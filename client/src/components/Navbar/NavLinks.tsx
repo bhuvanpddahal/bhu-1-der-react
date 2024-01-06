@@ -1,20 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { State } from '../../interfaces/store';
+
+import { User } from '../../interfaces/auth';
 
 interface NavLinksProp {
     setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
     pathname: string;
+    user: User;
 }
 
-const NavLinks: React.FC<NavLinksProp> = ({ setShowMenu }: NavLinksProp) => {
-    const { user } = useSelector((state: State) => state.auth);
-
+const NavLinks: React.FC<NavLinksProp> = ({ setShowMenu, pathname, user }: NavLinksProp) => {
     return (
         <>
-            <Link onClick={() => setShowMenu(false)} to='/login' className='transition-color duration-200 text-darkgrey hover:text-normal'>{user ? 'Log Out' : 'Sign In'}</Link>
-            <Link onClick={() => setShowMenu(false)} to={`${user ? '/' : '/get-started'}`} className={`transition-color duration-200 ${user ? 'text-primary hover:text-primarydark' : 'text-darkgrey hover:text-normal'}`}>{user ? user?.username : 'Get Started'}</Link>
+            <Link onClick={() => setShowMenu(false)} to='/login' className={`transition-color duration-200 text-darkgrey ${pathname === '/login' ? 'text-normal' : ''} hover:text-normal`}>{user ? 'Log Out' : 'Sign In'}</Link>
+            <Link onClick={() => setShowMenu(false)} to={`${user ? '/' : '/get-started'}`} className={`transition-color duration-200 ${user ? 'text-primary hover:text-primarydark' : pathname === '/get-started' ? 'text-normal' : 'text-darkgrey hover:text-normal'}`}>{user ? user?.username : 'Get Started'}</Link>
         </>
     )
 };

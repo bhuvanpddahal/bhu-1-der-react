@@ -8,20 +8,23 @@ export interface FormDataProp {
 
 export interface State {
     isLoading: boolean;
-    user: User | null;
+    user: User;
     token: string;
 }
 
-interface User {
+interface UserType {
     _id: ObjectId;
     username: string;
     email: string;
     password: string;
+    type: string;
     joinedAt: string;
 }
 
+export type User = UserType | null;
+
 interface ManyData {
-    user?: User;
+    user?: UserType;
     token?: string;
 }
 
