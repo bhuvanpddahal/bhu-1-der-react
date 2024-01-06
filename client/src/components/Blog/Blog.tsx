@@ -11,7 +11,7 @@ const Blog: React.FC = () => {
                 <span className='text-sm'>January 27, 2024</span>
             </p>
             <p className='text-normal mt-2 mb-6 line-clamp-5'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, qui suscipit consectetur ipsa incidunt nostrum cumque voluptatem dolores quos libero? Lorem ipsum dolor sit amet consectetur adipisicing elit. Est quae optio hic, vel fugiat officiis veniam quia itaque rerum, tempore quod repudiandae enim perferendis, sequi quidem temporibus deleniti quasi? At?</p>
-            <Link className='px-4 py-2 bg-primary text-white rounded-sm hover:bg-primarydark' to='/blogs/123'>Read more</Link>
+            <Link className='px-4 py-2 bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark' to='/blogs/123'>Read more</Link>
         </li>
     )
 };
