@@ -11,7 +11,7 @@ const NavItems: React.FC<NavItemsProp> = ({ setShowMenu, pathname }: NavItemsPro
         <>
             <li className={`transition-color duration-200 ${pathname === '/' ? 'text-normal' : ''} hover:text-normal`}><Link onClick={() => setShowMenu(false)} to="/">Introduction</Link></li>
             <li className={`transition-color duration-200 ${pathname === '/projects' ? 'text-normal' : ''} hover:text-normal`}><Link onClick={() => setShowMenu(false)} to="/projects">Projects</Link></li>
-            <li className={`transition-color duration-200 ${pathname === '/blog' ? 'text-normal' : ''} hover:text-normal`}><Link onClick={() => setShowMenu(false)} to="/blog">Blog</Link></li>
+            <li className={`transition-color duration-200 ${pathname === '/blogs' ? 'text-normal' : ''} hover:text-normal`}><Link onClick={() => setShowMenu(false)} to="/blogs">Blogs</Link></li>
             <li className={`transition-color duration-200 ${pathname === '/contact' ? 'text-normal' : ''} hover:text-normal`}><Link onClick={() => setShowMenu(false)} to="/contact">Contact</Link></li>
         </>
     )

@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
-import HomePage from './components/Utils/HomePage';
-import Footer from './components/Utils/Footer';
+import HomePage from './components/Home/HomePage';
+import Footer from './components/Footer/Footer';
 import Auth from './components/Auth/Auth';
 import Blogs from './components/Blog/Blogs';
 import Projects from './components/Project/Projects';
@@ -22,12 +22,13 @@ const App: React.FC = () => {
                 <Navbar />
                 <Routes>
                     <Route index element={<HomePage />} />
-                    <Route path='/auth' element={<Auth />} />
+                    <Route path='/login' element={<Auth />} />
+                    <Route path='/get-started' element={<Auth />} />
                     <Route path='/projects/*'>
                         <Route index element={<Projects />} />
                         <Route path=':id' element={<ProjectDetails />} />
                     </Route>
-                    <Route path='/blog/*'>
+                    <Route path='/blogs/*'>
                         <Route index element={<Blogs />} />
                         <Route path=':id' element={<BlogDetails />} />
                     </Route>

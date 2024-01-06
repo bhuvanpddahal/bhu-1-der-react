@@ -9,8 +9,6 @@ import Logo from '../../images/main-logo.png';
 const Navbar: React.FC = () => {
     const location = useLocation();
     const [showMenu, setShowMenu] = useState(false);
-    console.log(location);
-    
 
     return (
         <nav className='pl-3 pr-10 py-3 bg-lightgrey'>

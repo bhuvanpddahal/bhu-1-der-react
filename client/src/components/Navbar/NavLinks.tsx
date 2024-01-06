@@ -9,8 +9,8 @@ interface NavLinksProp {
 const NavLinks: React.FC<NavLinksProp> = ({ setShowMenu }: NavLinksProp) => {
     return (
         <>
-            <Link onClick={() => setShowMenu(false)} to='/auth' className='transition-color duration-200 text-darkgrey hover:text-normal'>Sign In</Link>
-            <Link onClick={() => setShowMenu(false)} to='/auth' className='transition-color duration-200 text-darkgrey hover:text-normal'>Get Started</Link>
+            <Link onClick={() => setShowMenu(false)} to='/login' className='transition-color duration-200 text-darkgrey hover:text-normal'>Sign In</Link>
+            <Link onClick={() => setShowMenu(false)} to='/get-started' className='transition-color duration-200 text-darkgrey hover:text-normal'>Get Started</Link>
         </>
     )
 };
