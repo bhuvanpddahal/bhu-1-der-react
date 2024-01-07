@@ -13,7 +13,6 @@ const BlogForm: React.FC = () => {
     const dispatch: any = useDispatch();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const isLoading = false;
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -25,6 +24,7 @@ const BlogForm: React.FC = () => {
     };
 
     const { user } = useSelector((state: State) => state.auth);
+    const { isLoading } = useSelector((state: State) => state.blog);
     if(user?.type !== admin) return <NotFound message='Page not found' />
 
     return (
@@ -33,11 +33,11 @@ const BlogForm: React.FC = () => {
                 <h1 className='text-lg font-medium text-center text-dark mb-4'>Create a blog</h1>
                 <div className='mb-3'>
                     <label className='font-medium' htmlFor="title">Title</label>
-                    <input onChange={(e) => setTitle(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' name='title' id='title' type="text" value={title} />
+                    <input onChange={(e) => setTitle(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' name='title' id='title' type="text" value={title} required />
                 </div>
                 <div className='mb-3'>
                     <label className='font-medium' htmlFor="description">Description</label>
-                    <textarea onChange={(e) => setDescription(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none resize-none' name="description" id="description" value={description} cols={30} rows={10}></textarea>
+                    <textarea onChange={(e) => setDescription(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none resize-none' name="description" id="description" value={description} cols={30} rows={10} required></textarea>
                 </div>
                 <button className={`w-full py-2 flex items-center justify-center gap-1 bg-primary text-white font-medium rounded-sm transition-bg duration-300 ${isLoading ? 'cursor-not-allowed' : 'hover:bg-primarydark'}`} type="submit" disabled={isLoading}>
                     <FilePlus size={22} className='inline' /> {isLoading ? 'Creating...' : 'Create'}

@@ -2,38 +2,40 @@ import { ObjectId } from 'mongodb';
 
 export interface FormDataProp {
     title: string;
+    image: string;
     description: string;
 }
 
 export interface State {
     isLoading: boolean;
     fetched: boolean;
-    blogs: BlogType[];
-    selectedBlog: Blog;
+    projects: ProjectType[];
+    selectedProject: Project;
     page: number;
     limit: number;
     totalPages: number;
 }
 
-interface BlogInit {
+interface ProjectInit {
     title: string;
+    image: string;
     description: string;
-    createdAt: string;
+    addedAt: string;
 }
 
-interface BlogType extends BlogInit {
+interface ProjectType extends ProjectInit {
     _id: ObjectId;
 }
 
-export type Blog = BlogType | null;
+export type Project = ProjectType | null;
 
 export interface ManyData {
-    blogs: BlogType[];
+    projects: ProjectType[];
     page: number;
     totalPages: number;
 }
 
-type Data = BlogType | ManyData;
+type Data = ProjectType | ManyData;
 
 export interface Action {
     type: string;
@@ -41,6 +43,6 @@ export interface Action {
     data?: Data;
 }
 
-export interface BlogProp extends BlogInit {
+export interface ProjectProp extends ProjectInit {
     id: string;
 }

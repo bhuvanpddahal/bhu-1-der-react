@@ -6,8 +6,8 @@ import Blog from './Blog';
 import Loader from '../Loader/Loader';
 import NotFound from '../NotFound/NotFound';
 import MiniLoader from '../Loader/MiniLoader';
-import { getBlogs, getMoreBlogs } from '../../actions/blog';
 import { State } from '../../interfaces/store';
+import { getBlogs, getMoreBlogs } from '../../actions/blog';
 
 const Blogs: React.FC = () => {
     const dispatch: any = useDispatch();
@@ -17,12 +17,12 @@ const Blogs: React.FC = () => {
     };
 
     useEffect(() => {
-        if (!blogs.length) {
+        if (!fetched) {
             dispatch(getBlogs(1, limit));
         }
     }, []);
 
-    const { isLoading, blogs, page, limit, totalPages } = useSelector((state: State) => state.blog);
+    const { isLoading, fetched, blogs, page, limit, totalPages } = useSelector((state: State) => state.blog);
     if (isLoading) return <Loader />
     if (!blogs.length) return <NotFound message='No blogs' />
 

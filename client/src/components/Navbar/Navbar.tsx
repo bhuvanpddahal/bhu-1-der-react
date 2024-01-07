@@ -16,7 +16,9 @@ const Navbar: React.FC = () => {
     const { user } = useSelector((state: State) => state.auth);
 
     useEffect(() => {
-        dispatch(loginWithToken());
+        if(localStorage.getItem('bhu-1-derToken')) {
+            dispatch(loginWithToken());
+        }
     }, []);
 
     return (

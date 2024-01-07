@@ -1,18 +1,18 @@
-import { ManyData } from '../interfaces/blog';
+import { ManyData } from '../interfaces/project';
 import {
     START_LOADING,
     END_LOADING
 } from '../constants/action';
 import {
-    BLOG,
-    CREATE_BLOG,
-    GET_BLOGS,
-    GET_MORE_BLOGS
-} from "../constants/blog";
+    PROJECT,
+    ADD_PROJECT,
+    GET_PROJECTS,
+    GET_MORE_PROJECTS
+} from "../constants/project";
 
 const initialState = {
-    blogs: [],
-    selectedBlog: null,
+    projects: [],
+    selectedProject: null,
     isLoading: false,
     fetched: false,
     page: 1,
@@ -20,28 +20,28 @@ const initialState = {
     totalPages: 1,
 };
 
-const blogReducer = (state = initialState, action: any) => {
+const projectReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case START_LOADING:
-            if(action.for !== BLOG) return state;
+            if(action.for !== PROJECT) return state;
             return { ...state, isLoading: true };
         case END_LOADING:
-            if(action.for !== BLOG) return state;
+            if(action.for !== PROJECT) return state;
             return { ...state, isLoading: false };
-        case CREATE_BLOG:
-            return { ...state, blogs: [action?.data, ...state.blogs] };
-        case GET_BLOGS:
+        case ADD_PROJECT:
+            return { ...state, projects: [action?.data, ...state.projects] };
+        case GET_PROJECTS:
             return {
                 ...state,
-                blogs: (action?.data as ManyData)?.blogs,
+                projects: (action?.data as ManyData)?.projects,
                 page: (action?.data as ManyData)?.page,
                 totalPages: (action?.data as ManyData)?.totalPages,
                 fetched: true
             };
-        case GET_MORE_BLOGS:
+        case GET_MORE_PROJECTS:
             return {
                 ...state,
-                blogs: [...state.blogs, ...(action?.data as ManyData)?.blogs],
+                projects: [...state.projects, ...(action?.data as ManyData)?.projects],
                 page: (action?.data as ManyData)?.page,
                 totalPages: (action?.data as ManyData)?.totalPages
             };
@@ -50,4 +50,4 @@ const blogReducer = (state = initialState, action: any) => {
     }
 };
 
-export default blogReducer;
+export default projectReducer;

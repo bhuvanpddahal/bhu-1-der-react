@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 import './src/mongodb/connection.js';
 import userRouter from './src/routes/user.routes.js';
 import blogRouter from './src/routes/blog.routes.js';
+import projectRouter from './src/routes/project.routes.js';
 
 // CONFIGURATIONS
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(cors());
 // ROUTES
 app.use('/api/users', userRouter);
 app.use('/api/blogs', blogRouter);
+app.use('/api/projects', projectRouter);
 
 // SERVER
 app.listen(port, () => {
