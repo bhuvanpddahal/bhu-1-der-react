@@ -8,7 +8,7 @@ import { State } from '../../interfaces/store';
 const ProjectForm: React.FC = () => {
     const { user } = useSelector((state: State) => state.auth);
 
-    if(user?.type !== admin) return <NotFound />
+    if(user?.type !== admin) return <NotFound message='Page not found' />
 
     return (
         <div>ProjectForm</div>

@@ -1,9 +1,7 @@
-import { State, Action, ManyData } from '../interfaces/auth';
+import { State, Action } from '../interfaces/auth';
 import {
     START_LOADING,
-    END_LOADING,
-    START_MINI_LOADING,
-    END_MINI_LOADING
+    END_LOADING
 } from '../constants/action';
 import {
     AUTH,
@@ -26,12 +24,6 @@ const authReducer = (state: State = initialState, action: Action) => {
         case END_LOADING:
             if(action.for !== AUTH) return state;
             return { ...state, isLoading: false };
-        case START_MINI_LOADING:
-            if(action.for !== AUTH) return state;
-            return { ...state, isMiniLoading: true };
-        case END_MINI_LOADING:
-            if(action.for !== AUTH) return state;
-            return { ...state, isMiniLoading: false };
         case SIGNUP:
         case LOGIN:
             localStorage.setItem('bhu-1-derToken',  action?.data?.token || '');

@@ -23,7 +23,7 @@ interface UserType {
 
 export type User = UserType | null;
 
-interface ManyData {
+interface Data {
     user?: UserType;
     token?: string;
 }
@@ -31,5 +31,5 @@ interface ManyData {
 export interface Action {
     type: string;
     for?: string;
-    data?: ManyData;
+    data?: Data;
 }
