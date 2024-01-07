@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
 import Blog from './Blog';
+import Loader from '../Loader/Loader';
 import NotFound from '../NotFound/NotFound';
-import { useSelector } from 'react-redux';
+import { getBlogs } from '../../actions/blog';
 import { State } from '../../interfaces/store';
 
 const Blogs: React.FC = () => {
-    const { blogs } = useSelector((state: State) => state.blog);
+    const dispatch: any = useDispatch();
 
+    useEffect(() => {
+        if(!blogs) dispatch(getBlogs(1, limit));
+    }, []);
+
+    const { isLoading, blogs, page, limit, totalPages } = useSelector((state: State) => state.blog);
+    if(isLoading) return <Loader />
     if(!blogs?.length) return <NotFound message='No blogs' />
 
     return (
@@ -17,6 +25,7 @@ const Blogs: React.FC = () => {
                 <ul className='grid grid-cols-1 md:grid-cols-2 gap-5'>
                     {blogs.map((blog) => (
                         <Blog
+                            key={blog?._id}
                             id={blog?._id?.toString()}
                             title={blog?.title}
                             description={blog?.description}

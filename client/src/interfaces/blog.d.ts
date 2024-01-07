@@ -9,6 +9,9 @@ export interface State {
     isLoading: boolean;
     blogs: BlogType[];
     selectedBlog: Blog;
+    page: number;
+    limit: number;
+    totalPages: number;
 }
 
 interface BlogInit {
@@ -27,7 +30,13 @@ interface Blogs {
     blogs: BlogType[];
 }
 
-type Data = BlogType | Blogs;
+export interface ManyData {
+    blogs: Blogs;
+    page: number;
+    totalPages: number;
+}
+
+type Data = BlogType | ManyData;
 
 export interface Action {
     type: string;

@@ -14,3 +14,17 @@ export const createBlog = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
     }
 };
+
+export const getBlogs = async (req, res) => {
+    try {
+        const { page, limit } = req.query;
+        const skip = (Number(page) - 1) * limit;
+        const totalBlogs = await Blog.countDocuments({}, { hint: "_id_" });
+        const blogs = await Blog.find().sort({ _id: -1 }).limit(limit).skip(skip);
+        const totalPages = Math.ceil(totalBlogs / limit);
+        res.status(200).json({ blogs, totalPages, page: Number(page) + 1 });
+
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+};

@@ -10,6 +10,7 @@ import {
 import {
     BLOG,
     CREATE_BLOG,
+    GET_BLOGS,
     creation_success
 } from '../constants/blog';
 import { success } from '../constants/alert';
@@ -25,6 +26,19 @@ export const createBlog = (formData: FormDataProp, navigate: any) => async (disp
         dispatch({ type: END_LOADING, for: BLOG });
         showAlert(creation_success, success, dispatch);
         navigate('/blogs');
+        
+    } catch (error) {
+        dispatch({ type: END_LOADING, for: BLOG });
+        handleError(error, dispatch);
+    }
+};
+
+export const getBlogs = (page: number, limit: number) => async (dispatch: Dispatch<BlogAction | AlertAction>) => {
+    try {
+        dispatch({ type: START_LOADING, for: BLOG });
+        const { data } = await api.getBlogs(page, limit);
+        dispatch({ type: GET_BLOGS, data });
+        dispatch({ type: END_LOADING, for: BLOG });
         
     } catch (error) {
         dispatch({ type: END_LOADING, for: BLOG });

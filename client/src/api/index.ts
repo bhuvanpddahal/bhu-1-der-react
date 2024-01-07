@@ -18,3 +18,4 @@ export const login = (formData: AuthFormData) => API.post('/users/login', formDa
 export const loginWithToken = () => API.post('/users/login-with-token');
 
 export const createBlog = (formData: BlogFormData) => API.post('/blogs', formData);
+export const getBlogs = (page: number, limit: number) => API.get(`/blogs?page=${page}&limit=${limit}`);
