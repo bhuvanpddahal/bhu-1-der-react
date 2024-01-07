@@ -1,37 +1,54 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Blog from './Blog';
 import Loader from '../Loader/Loader';
 import NotFound from '../NotFound/NotFound';
-import { getBlogs } from '../../actions/blog';
+import MiniLoader from '../Loader/MiniLoader';
+import { getBlogs, getMoreBlogs } from '../../actions/blog';
 import { State } from '../../interfaces/store';
 
 const Blogs: React.FC = () => {
     const dispatch: any = useDispatch();
 
+    const morePosts = () => {
+        dispatch(getMoreBlogs(page, limit));
+    };
+
     useEffect(() => {
-        if(!blogs) dispatch(getBlogs(1, limit));
+        if (!blogs.length) {
+            dispatch(getBlogs(1, limit));
+        }
     }, []);
 
     const { isLoading, blogs, page, limit, totalPages } = useSelector((state: State) => state.blog);
-    if(isLoading) return <Loader />
-    if(!blogs?.length) return <NotFound message='No blogs' />
+    if (isLoading) return <Loader />
+    if (!blogs.length) return <NotFound message='No blogs' />
 
     return (
         <div className='bg-lightgrey min-h-rem flex justify-center pt-3 pb-7 px-3'>
             <div className='max-w-4xl w-full'>
                 <h3 className='text-2xl font-medium text-center text-dark mb-4 mt-n10px'>Blogs</h3>
-                <ul className='grid grid-cols-1 md:grid-cols-2 gap-5'>
-                    {blogs.map((blog) => (
-                        <Blog
-                            key={blog?._id}
-                            id={blog?._id?.toString()}
-                            title={blog?.title}
-                            description={blog?.description}
-                            createdAt={blog?.createdAt}
-                        />
-                    ))}
+                <ul>
+                    <InfiniteScroll
+                        dataLength={blogs.length}
+                        next={morePosts}
+                        hasMore={page <= totalPages}
+                        loader={<MiniLoader />}
+                        scrollThreshold={'0px'}
+                        className='grid grid-cols-1 md:grid-cols-2 gap-5'
+                    >
+                        {blogs.map((blog) => (
+                            <Blog
+                                key={blog?._id}
+                                id={blog?._id?.toString()}
+                                title={blog?.title}
+                                description={blog?.description}
+                                createdAt={blog?.createdAt}
+                            />
+                        ))}
+                    </InfiniteScroll>
                 </ul>
             </div>
         </div>

@@ -6,7 +6,8 @@ import {
 import {
     BLOG,
     CREATE_BLOG,
-    GET_BLOGS
+    GET_BLOGS,
+    GET_MORE_BLOGS
 } from "../constants/blog";
 import { RESET_PAGE } from '../constants/util';
 
@@ -15,7 +16,7 @@ const initialState = {
     selectedBlog: null,
     isLoading: false,
     page: 1,
-    limit: 5,
+    limit: 6,
     totalPages: 1,
 };
 
@@ -33,6 +34,13 @@ const blogReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 blogs: (action?.data as ManyData)?.blogs,
+                page: (action?.data as ManyData)?.page,
+                totalPages: (action?.data as ManyData)?.totalPages
+            };
+        case GET_MORE_BLOGS:
+            return {
+                ...state,
+                blogs: [...state.blogs, ...(action?.data as ManyData)?.blogs],
                 page: (action?.data as ManyData)?.page,
                 totalPages: (action?.data as ManyData)?.totalPages
             };

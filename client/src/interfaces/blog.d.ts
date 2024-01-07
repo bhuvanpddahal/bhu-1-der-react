@@ -26,12 +26,8 @@ interface BlogType extends BlogInit {
 
 export type Blog = BlogType | null;
 
-interface Blogs {
-    blogs: BlogType[];
-}
-
 export interface ManyData {
-    blogs: Blogs;
+    blogs: BlogType[];
     page: number;
     totalPages: number;
 }

@@ -11,6 +11,7 @@ import {
     BLOG,
     CREATE_BLOG,
     GET_BLOGS,
+    GET_MORE_BLOGS,
     creation_success
 } from '../constants/blog';
 import { success } from '../constants/alert';
@@ -42,6 +43,16 @@ export const getBlogs = (page: number, limit: number) => async (dispatch: Dispat
         
     } catch (error) {
         dispatch({ type: END_LOADING, for: BLOG });
+        handleError(error, dispatch);
+    }
+};
+
+export const getMoreBlogs = (page: number, limit: number) => async (dispatch: Dispatch<BlogAction | AlertAction>) => {
+    try {
+        const { data } = await api.getBlogs(page, limit);
+        dispatch({ type: GET_MORE_BLOGS, data });
+        
+    } catch (error) {
         handleError(error, dispatch);
     }
 };
