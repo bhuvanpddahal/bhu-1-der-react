@@ -7,7 +7,9 @@ import {
     PROJECT,
     ADD_PROJECT,
     GET_PROJECTS,
-    GET_MORE_PROJECTS
+    GET_MORE_PROJECTS,
+    GET_PROJECT_BY_ID,
+    REMOVE_SELECTED_PROJECT
 } from "../constants/project";
 
 const initialState = {
@@ -45,6 +47,10 @@ const projectReducer = (state = initialState, action: any) => {
                 page: (action?.data as ManyData)?.page,
                 totalPages: (action?.data as ManyData)?.totalPages
             };
+        case GET_PROJECT_BY_ID:
+            return { ...state, selectedProject: action?.data };
+        case REMOVE_SELECTED_PROJECT:
+            return { ...state, selectedProject: null };
         default:
             return state;
     }

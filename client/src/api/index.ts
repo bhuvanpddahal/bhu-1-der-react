@@ -20,6 +20,7 @@ export const loginWithToken = () => API.post('/users/login-with-token');
 
 export const createBlog = (formData: BlogFormData) => API.post('/blogs', formData);
 export const getBlogs = (page: number, limit: number) => API.get(`/blogs?page=${page}&limit=${limit}`);
+export const getProjectById = (id: string) => API.get(`/projects/${id}`);
 
 export const addProject = (formData: ProjectFormData) => API.post('/projects', formData);
 export const getProjects = (page: number, limit: number) => API.get(`/projects?page=${page}&limit=${limit}`);

@@ -12,6 +12,7 @@ import {
     ADD_PROJECT,
     GET_PROJECTS,
     GET_MORE_PROJECTS,
+    GET_PROJECT_BY_ID,
     addition_success
 } from '../constants/project';
 import { success } from '../constants/alert';
@@ -53,6 +54,19 @@ export const getMoreProjects = (page: number, limit: number) => async (dispatch:
         dispatch({ type: GET_MORE_PROJECTS, data });
         
     } catch (error) {
+        handleError(error, dispatch);
+    }
+};
+
+export const getProjectById = (id: string) => async (dispatch: Dispatch<ProjectAction | AlertAction>) => {
+    try {
+        dispatch({ type: START_LOADING, for: PROJECT });
+        const { data } = await api.getProjectById(id);
+        dispatch({ type: GET_PROJECT_BY_ID, data });
+        dispatch({ type: END_LOADING, for: PROJECT });
+        
+    } catch (error) {
+        dispatch({ type: END_LOADING, for: PROJECT });
         handleError(error, dispatch);
     }
 };

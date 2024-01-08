@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import cloudinary from 'cloudinary';
+import { ObjectId } from 'mongodb';
 
 import User from '../models/User.js';
 import Project from '../models/Project.js';
@@ -38,6 +39,19 @@ export const getProjects = async (req, res) => {
         const projects = await Project.find().sort({ _id: -1 }).limit(limit).skip(skip);
         const totalPages = Math.ceil(totalProjects / limit);
         res.status(200).json({ projects, totalPages, page: Number(page) + 1 });
+
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+};
+
+export const getProjectById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if(!ObjectId.isValid(id)) return res.status(404).json({ message: "Project not found" });
+        const project = await Project.findById(id);
+        if(!project) return res.status(404).json({ message: "project not found" });
+        res.status(200).json(project);
 
     } catch (error) {
         res.status(500).json({ message: "Something went wrong" });
