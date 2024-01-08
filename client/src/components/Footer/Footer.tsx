@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, GitHub } from 'react-feather';
 
-import Logo from '../../images/main-logo.png';
+import Logo from '../../images/logos/main-logo.png';
 
 const Footer: React.FC = () => {
     return (

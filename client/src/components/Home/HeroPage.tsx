@@ -2,7 +2,7 @@ import React from 'react';
 import { Play, GitHub } from 'react-feather';
 import { Link } from 'react-router-dom';
 
-import HeroImg from '../../images/hero.avif';
+import HeroImg from '../../images/assets/hero.avif';
 
 const HeroPage: React.FC = () => {
     return (

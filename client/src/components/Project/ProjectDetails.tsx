@@ -26,7 +26,7 @@ const ProjectDetails: React.FC = () => {
     if(!selectedProject) return <NotFound message='Project not found' />
 
     return (
-        <div className='bg-lightgrey min-h-rem flex justify-center pt-3 pb-7 px-3'>
+        <div className='bg-lightgrey min-h-rem flex justify-center pt-3 pb-10 px-3'>
             <div className='max-w-3xl w-full'>
                 <h3 className='text-2xl font-medium text-center text-dark mb-4 mt-n10px'>Project Details</h3>
                 <div className='shadow-large rounded-xl bg-white px-7 pt-7 pb-8'>

@@ -43,7 +43,8 @@ module.exports = {
                 "22px": "22px",
             },
             backgroundImage: {
-                "intro": "url('/src/images/bulb.png')",
+                "about": "url('/src/images/assets/bulb.png')",
+                "expert": "url('/src/images/assets/build.png')",
             },
             transitionProperty: {
                 "color": "color",

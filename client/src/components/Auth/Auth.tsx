@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import Logo from '../../images/main-logo.png';
-import LoginImg from '../../images/login.avif';
+import Logo from '../../images/logos/main-logo.png';
+import LoginImg from '../../images/assets/login.avif';
 import { signup, login } from '../../actions/auth';
 import { LOGOUT } from '../../constants/auth';
 import { State } from '../../interfaces/store';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NotFoundImg from '../../images/not-found.png';
+import NotFoundImg from '../../images/assets/not-found.png';
 
 interface NotFoundProp {
     message: string;

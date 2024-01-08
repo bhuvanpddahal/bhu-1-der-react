@@ -5,7 +5,7 @@ import { Menu, X } from 'react-feather';
 
 import NavItems from './NavItems';
 import NavLinks from './NavLinks';
-import Logo from '../../images/main-logo.png';
+import Logo from '../../images/logos/main-logo.png';
 import { State } from '../../interfaces/store';
 import { loginWithToken } from '../../actions/auth';
 
