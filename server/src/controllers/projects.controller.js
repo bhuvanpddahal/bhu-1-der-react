@@ -50,7 +50,7 @@ export const getProjectById = async (req, res) => {
         const { id } = req.params;
         if(!ObjectId.isValid(id)) return res.status(404).json({ message: "Project not found" });
         const project = await Project.findById(id);
-        if(!project) return res.status(404).json({ message: "project not found" });
+        if(!project) return res.status(404).json({ message: "Project not found" });
         res.status(200).json(project);
 
     } catch (error) {

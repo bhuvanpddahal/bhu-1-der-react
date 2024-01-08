@@ -12,6 +12,7 @@ import {
     CREATE_BLOG,
     GET_BLOGS,
     GET_MORE_BLOGS,
+    GET_BLOG_BY_ID,
     creation_success
 } from '../constants/blog';
 import { success } from '../constants/alert';
@@ -53,6 +54,19 @@ export const getMoreBlogs = (page: number, limit: number) => async (dispatch: Di
         dispatch({ type: GET_MORE_BLOGS, data });
         
     } catch (error) {
+        handleError(error, dispatch);
+    }
+};
+
+export const getBlogById = (id: string) => async (dispatch: Dispatch<BlogAction | AlertAction>) => {
+    try {
+        dispatch({ type: START_LOADING, for: BLOG });
+        const { data } = await api.getBlogById(id);
+        dispatch({ type: GET_BLOG_BY_ID, data });
+        dispatch({ type: END_LOADING, for: BLOG });
+        
+    } catch (error) {
+        dispatch({ type: END_LOADING, for: BLOG });
         handleError(error, dispatch);
     }
 };

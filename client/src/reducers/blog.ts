@@ -7,7 +7,9 @@ import {
     BLOG,
     CREATE_BLOG,
     GET_BLOGS,
-    GET_MORE_BLOGS
+    GET_MORE_BLOGS,
+    GET_BLOG_BY_ID,
+    REMOVE_SELECTED_BLOG
 } from "../constants/blog";
 
 const initialState = {
@@ -45,6 +47,10 @@ const blogReducer = (state = initialState, action: any) => {
                 page: (action?.data as ManyData)?.page,
                 totalPages: (action?.data as ManyData)?.totalPages
             };
+        case GET_BLOG_BY_ID:
+            return { ...state, selectedBlog: action?.data };
+        case REMOVE_SELECTED_BLOG:
+            return { ...state, selectedBlog: null };
         default:
             return state;
     }
