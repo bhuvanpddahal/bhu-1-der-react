@@ -15,7 +15,7 @@ import Auth from './components/Auth/Auth';
 import Blogs from './components/Blog/Blogs';
 import Projects from './components/Project/Projects';
 import Contact from './components/Contact/Contact';
-import BlogDetails from './components/Blog/BlogDetails';
+import BlogDetails from './components/Blog/BlogDetails/BlogDetails';
 import BlogForm from './components/Blog/BlogForm';
 import ProjectDetails from './components/Project/ProjectDetails';
 import ProjectForm from './components/Project/ProjectForm';

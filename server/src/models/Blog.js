@@ -9,6 +9,22 @@ const BlogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    comments: {
+        type: [{
+            id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+            username: { type: String, required: true },
+            comment: { type: String, required: true },
+            replies: {
+                type: [{
+                    id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+                    username: { type: String, required: true },
+                    reply: { type: String, required: true }
+                }],
+                default: []
+            }
+        }],
+        default: []
+    },
     createdAt: {
         type: Date,
         default: new Date()

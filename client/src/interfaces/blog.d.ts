@@ -22,8 +22,22 @@ interface BlogInit {
     createdAt: string;
 }
 
-interface BlogType extends BlogInit {
+interface Reply {
+    id: ObjectId;
+    username: string;
+    reply: string;
+}
+
+interface Comment {
+    id: ObjectId;
+    username: string;
+    comment: string;
+    replies: Reply[];
+}
+
+export interface BlogType extends BlogInit {
     _id: ObjectId;
+    comments: Comment[];
 }
 
 export type Blog = BlogType | null;
@@ -34,7 +48,7 @@ export interface ManyData {
     totalPages: number;
 }
 
-type Data = string | BlogType | ManyData;
+type Data = string | Comment | BlogType | ManyData;
 
 export interface Action {
     type: string;
@@ -45,4 +59,14 @@ export interface Action {
 export interface BlogProp extends BlogInit {
     id: string;
     dispatch: any;
+}
+
+export interface CommentsProp {
+    id: string;
+    comments: Comment[];
+}
+
+export interface CommentProp {
+    comment: Comment;
+    isLast: boolean;
 }

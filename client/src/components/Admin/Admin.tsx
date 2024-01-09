@@ -15,7 +15,7 @@ const Admin: React.FC = () => {
 
     return (
         <div className='bg-lightgrey min-h-rem flex flex-col items-center justify-center gap-6 pt-3 pb-10 px-3'>
-            <img className='h-180px' src={AdminImg} alt="admin" />
+            <img className='h-160px' src={AdminImg} alt="admin" />
             <div className='flex gap-4'>
                 <Link className='px-4 py-2 flex items-center gap-1 bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark' to='/projects/add'>
                     <Code size={22} className='inline' /> Add a project

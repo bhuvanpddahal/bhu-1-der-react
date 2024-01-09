@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Logo from '../../images/logos/main-logo.png';
-import LoginImg from '../../images/assets/login.avif';
+import SignImg from '../../images/assets/sign.avif';
 import { signup, login } from '../../actions/auth';
 import { LOGOUT } from '../../constants/auth';
 import { State } from '../../interfaces/store';
@@ -48,7 +48,7 @@ const Auth: React.FC = () => {
     return (
         <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>
             <div className='flex max-w-4xl rounded-xl overflow-hidden shadow-large'>
-                <img className='hidden md:inline-block w-1/2 object-cover' src={LoginImg} alt="" />
+                <img className='hidden md:inline-block w-1/2 object-cover' src={SignImg} alt="" />
                 <div className='w-full flex flex-col items-center pt-3 pb-5 px-5 bg-white'>
                     <img className='h-60px' src={Logo} alt="bhu-1-der" />
                     <h4 className='text-md font-semibold text-normal'>{isLogin ? 'Welcome back!' : 'Create an acount!'}</h4>

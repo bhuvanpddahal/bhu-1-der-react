@@ -17,9 +17,11 @@ import {
     GET_BLOG_BY_ID,
     EDIT_BLOG,
     DELETE_BLOG,
+    COMMENT_ON_BLOG,
     creation_success,
     edition_success,
-    deletion_success
+    deletion_success,
+    comment_success
 } from '../constants/blog';
 import { success } from '../constants/alert';
 import { FormDataProp } from '../interfaces/blog';
@@ -99,6 +101,21 @@ export const deleteBlog = (id: string) => async (dispatch: Dispatch<BlogAction |
         dispatch({ type: DELETE_BLOG, data: id });
         dispatch({ type: END_MINI_LOADING, for: BLOG });
         showAlert(deletion_success, success, dispatch);
+        
+    } catch (error) {
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
+        handleError(error, dispatch);
+    }
+};
+
+export const commentOnBlog = (id: string, comment: string, setComment: React.Dispatch<React.SetStateAction<string>>) => async (dispatch: Dispatch<BlogAction | AlertAction>) => {
+    try {
+        dispatch({ type: START_MINI_LOADING, for: BLOG });
+        const { data } = await api.commentOnBlog(id, comment);
+        dispatch({ type: COMMENT_ON_BLOG, data });
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
+        showAlert(comment_success, success, dispatch);
+        setComment('');
         
     } catch (error) {
         dispatch({ type: END_MINI_LOADING, for: BLOG });

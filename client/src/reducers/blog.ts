@@ -13,7 +13,8 @@ import {
     GET_BLOG_BY_ID,
     REMOVE_SELECTED_BLOG,
     EDIT_BLOG,
-    DELETE_BLOG
+    DELETE_BLOG,
+    COMMENT_ON_BLOG
 } from "../constants/blog";
 
 const initialState = {
@@ -71,6 +72,11 @@ const blogReducer = (state: State = initialState, action: Action) => {
             return {
                 ...state,
                 blogs: state.blogs.filter((blog) => blog._id.toString() !== action?.data)
+            };
+        case COMMENT_ON_BLOG:
+            return {
+                ...state,
+                selectedBlog: { ...state.selectedBlog, comments: [action?.data, ...(state.selectedBlog as BlogType)?.comments] }
             };
         default:
             return state;

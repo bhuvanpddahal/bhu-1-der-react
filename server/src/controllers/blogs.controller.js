@@ -78,3 +78,27 @@ export const deleteBlog = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
     }
 };
+
+export const commentOnBlog = async (req, res) => {
+    try {
+        const { userId } = req;
+        const { comment } = req.body;
+        const { id: blogId } = req.params;
+        const user = await User.findById(userId);
+        if(!ObjectId.isValid(blogId)) return res.status(404).json({ message: "Blog not found" });
+        const blog = await Blog.findById(blogId);
+        if(!blog) return res.status(404).json({ message: "Blog not found" });
+        const newComment = {
+            id: user._id,
+            username: user.username,
+            comment,
+            replies: []
+        };
+        blog.comments.push(newComment);
+        await blog.save();
+        res.status(200).json(newComment);
+
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+};
