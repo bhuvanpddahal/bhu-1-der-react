@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import moment from 'moment';
-import { Clock } from 'react-feather';
-import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import { Clock } from 'react-feather';
+import moment from 'moment';
 
 import Loader from '../Loader/Loader';
 import NotFound from '../NotFound/NotFound';
@@ -37,7 +37,7 @@ const ProjectDetails: React.FC = () => {
                     </p>
                     <h2 className='font-semibold text-lg text-dark'>{selectedProject?.title}</h2>
                     <p className='text-normal mt-2 mb-6'>{selectedProject?.description}</p>
-                    <Link className='px-4 py-2 bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark' to={`/projects/123`}>See code</Link>
+                    <Link className='px-4 py-2 bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark' to={selectedProject?.link} target='_blank'>See code</Link>
                 </div>
             </div>
         </div>

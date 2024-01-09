@@ -4,6 +4,7 @@ export interface FormDataProp {
     title: string;
     image: string;
     description: string;
+    link: string;
 }
 
 export interface State {
@@ -21,11 +22,12 @@ interface ProjectInit {
     title: string;
     image: string;
     description: string;
-    addedAt: string;
 }
 
 interface ProjectType extends ProjectInit {
     _id: ObjectId;
+    link: string;
+    addedAt: string;
 }
 
 export type Project = ProjectType | null;

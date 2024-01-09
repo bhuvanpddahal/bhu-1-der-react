@@ -13,6 +13,10 @@ const ProjectSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    link: {
+        type: String,
+        required: true
+    },
     addedAt: {
         type: Date,
         default: new Date()

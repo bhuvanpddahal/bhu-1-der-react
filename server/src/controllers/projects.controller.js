@@ -17,12 +17,12 @@ export const addProject = async (req, res) => {
 
     try {
         const { userId } = req;
-        const { title, image, description } = req.body;
+        const { title, image, description, link } = req.body;
         const user = await User.findById(userId);
         if(user.type !== "admin") return res.status(403).json({ message: "Admin permissions required" });
         const imageUrl = (await cloudinary.uploader.upload(image)).secure_url;
         networkError = false;
-        const newProject = await Project.create({ title, image: imageUrl, description });
+        const newProject = await Project.create({ title, image: imageUrl, description, link });
         res.status(200).json(newProject);
 
     } catch (error) {
@@ -64,7 +64,7 @@ export const editProject = async (req, res) => {
     try {
         const { userId } = req;
         const { id: projectId } = req.params;
-        const { title, description, image } = req.body;
+        const { title, image, description, link } = req.body;
         const user = await User.findById(userId);
         if(user.type !== "admin") return res.status(403).json({ message: "Admin permissions required" });
         if(!ObjectId.isValid(projectId)) return res.status(404).json({ message: "Project not found" });
@@ -73,7 +73,7 @@ export const editProject = async (req, res) => {
         let imageUrl = project.image;
         if(image !== imageUrl) imageUrl = (await cloudinary.uploader.upload(image)).secure_url;
         networkError = false;
-        const updatedProject = await Project.findByIdAndUpdate(projectId, { title, description, image: imageUrl }, { new: true });
+        const updatedProject = await Project.findByIdAndUpdate(projectId, { title, image: imageUrl, description, link }, { new: true });
         res.status(200).json(updatedProject);
 
     } catch (error) {

@@ -17,7 +17,6 @@ const Project: React.FC<ProjectProp> = ({
     title,
     image,
     description,
-    addedAt,
     dispatch
 }: ProjectProp) => {
     const navigate = useNavigate();

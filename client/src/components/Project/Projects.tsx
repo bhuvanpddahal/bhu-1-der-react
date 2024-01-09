@@ -46,7 +46,6 @@ const Projects: React.FC = () => {
                                 title={project?.title}
                                 image={project?.image}
                                 description={project?.description}
-                                addedAt={project?.addedAt}
                                 dispatch={dispatch}
                             />
                         ))}
