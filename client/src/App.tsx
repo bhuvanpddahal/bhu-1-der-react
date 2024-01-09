@@ -38,6 +38,7 @@ const App: React.FC = () => {
                         <Route index element={<Projects />} />
                         <Route path=':id' element={<ProjectDetails />} />
                         <Route path='add' element={<ProjectForm />} />
+                        <Route path='edit/:id' element={<ProjectForm />} />
                     </Route>
                     <Route path='/blogs/*'>
                         <Route index element={<Blogs />} />

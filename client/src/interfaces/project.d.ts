@@ -8,6 +8,7 @@ export interface FormDataProp {
 
 export interface State {
     isLoading: boolean;
+    isMiniLoading: boolean;
     fetched: boolean;
     projects: ProjectType[];
     selectedProject: Project;
@@ -45,4 +46,5 @@ export interface Action {
 
 export interface ProjectProp extends ProjectInit {
     id: string;
+    dispatch: any;
 }

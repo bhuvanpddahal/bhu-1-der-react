@@ -25,10 +25,10 @@ const BlogForm: React.FC = () => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         const formData = {
-            title,
-            description
+            title: title.trim(),
+            description: description.trim()
         };
-        if(id) dispatch(editBlog(id || '', formData, navigate));
+        if(id) dispatch(editBlog(id, formData, navigate));
         else dispatch(createBlog(formData, navigate));
     };
 
@@ -53,7 +53,7 @@ const BlogForm: React.FC = () => {
 
     if(user?.type !== admin) return <NotFound message='Page not found' />
     if(isLoading) return <Loader />
-    if(!selectedBlog) return <NotFound message='Blog not found' />
+    if(id && !selectedBlog) return <NotFound message='Blog not found' />
 
     return (
         <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>

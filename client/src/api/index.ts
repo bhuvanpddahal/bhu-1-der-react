@@ -27,3 +27,4 @@ export const deleteBlog = (id: string) => API.delete(`/blogs/${id}`);
 export const addProject = (formData: ProjectFormData) => API.post('/projects', formData);
 export const getProjects = (page: number, limit: number) => API.get(`/projects?page=${page}&limit=${limit}`);
 export const getProjectById = (id: string) => API.get(`/projects/${id}`);
+export const editProject = (id: string, formData: ProjectFormData) => API.patch(`/projects/${id}`, formData);

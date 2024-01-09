@@ -47,6 +47,7 @@ const Projects: React.FC = () => {
                                 image={project?.image}
                                 description={project?.description}
                                 addedAt={project?.addedAt}
+                                dispatch={dispatch}
                             />
                         ))}
                     </InfiniteScroll>

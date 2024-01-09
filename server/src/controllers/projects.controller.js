@@ -57,3 +57,28 @@ export const getProjectById = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
     }
 };
+
+export const editProject = async (req, res) => {
+    let networkError = true;
+
+    try {
+        const { userId } = req;
+        const { id: projectId } = req.params;
+        const { title, description, image } = req.body;
+        const user = await User.findById(userId);
+        if(user.type !== "admin") return res.status(403).json({ message: "Admin permissions required" });
+        if(!ObjectId.isValid(projectId)) return res.status(404).json({ message: "Project not found" });
+        const project = await Project.findById(projectId);
+        if(!project) return res.status(404).json({ message: "Project not found" });
+        let imageUrl = project.image;
+        if(image !== imageUrl) imageUrl = (await cloudinary.uploader.upload(image)).secure_url;
+        networkError = false;
+        const updatedProject = await Project.findByIdAndUpdate(projectId, { title, description, image: imageUrl }, { new: true });
+        res.status(200).json(updatedProject);
+
+    } catch (error) {
+        console.log(error.message);
+        if(networkError) return res.status(400).json({ message: "Network error" });
+        res.status(500).json({ message: "Something went wrong" });
+    }
+};

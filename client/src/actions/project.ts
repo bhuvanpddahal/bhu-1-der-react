@@ -5,7 +5,9 @@ import { Action as ProjectAction } from '../interfaces/project';
 import { Action as AlertAction } from '../interfaces/alert';
 import {
     START_LOADING,
-    END_LOADING
+    END_LOADING,
+    START_MINI_LOADING,
+    END_MINI_LOADING
 } from '../constants/action';
 import {
     PROJECT,
@@ -13,7 +15,11 @@ import {
     GET_PROJECTS,
     GET_MORE_PROJECTS,
     GET_PROJECT_BY_ID,
-    addition_success
+    EDIT_PROJECT,
+    DELETE_PROJECT,
+    addition_success,
+    edition_success,
+    deletion_success
 } from '../constants/project';
 import { success } from '../constants/alert';
 import { FormDataProp } from '../interfaces/project';
@@ -67,6 +73,21 @@ export const getProjectById = (id: string) => async (dispatch: Dispatch<ProjectA
         
     } catch (error) {
         dispatch({ type: END_LOADING, for: PROJECT });
+        handleError(error, dispatch);
+    }
+};
+
+export const editProject = (id: string, formData: FormDataProp, navigate: any) => async (dispatch: Dispatch<ProjectAction | AlertAction>) => {
+    try {
+        dispatch({ type: START_MINI_LOADING, for: PROJECT });
+        const { data } = await api.editProject(id, formData);
+        dispatch({ type: EDIT_PROJECT, data });
+        dispatch({ type: END_MINI_LOADING, for: PROJECT });
+        showAlert(edition_success, success, dispatch);
+        navigate('/projects');
+        
+    } catch (error) {
+        dispatch({ type: END_MINI_LOADING, for: PROJECT });
         handleError(error, dispatch);
     }
 };
