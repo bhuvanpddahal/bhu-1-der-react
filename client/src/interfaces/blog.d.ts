@@ -7,6 +7,7 @@ export interface FormDataProp {
 
 export interface State {
     isLoading: boolean;
+    isMiniLoading: boolean;
     fetched: boolean;
     blogs: BlogType[];
     selectedBlog: Blog;

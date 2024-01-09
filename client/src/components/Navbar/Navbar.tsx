@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
             <div className={`fixed top-0 left-0 z-10 w-screen bg-white shadow-medium transition-all duration-200 ${showMenu ? 'pointer-events-auto md:pointer-events-none opacity-100 md:opacity-0' : 'pointer-events-none opacity-0 -translate-y-full'}`}>
                 <div className='flex items-center justify-between pl-3 pr-10 pt-3'>
                     <img className='h-60px' src={Logo} alt="bhu-1-der" />
-                    <X onClick={() => setShowMenu(false)} color='#333' size={38} className='p-2 cursor-pointer rounded-full hover:bg-lightgrey' />
+                    <X onClick={() => setShowMenu(false)} color='#333' size={38} className='p-2 cursor-pointer rounded-full transition-bg duration-300 hover:bg-lightgrey' />
                 </div>
                 <ul className='flex flex-col gap-3 items-center text-darkgrey px-6 pb-4'>
                     <NavItems

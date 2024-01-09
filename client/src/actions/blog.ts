@@ -5,7 +5,9 @@ import { Action as BlogAction } from '../interfaces/blog';
 import { Action as AlertAction } from '../interfaces/alert';
 import {
     START_LOADING,
-    END_LOADING
+    END_LOADING,
+    START_MINI_LOADING,
+    END_MINI_LOADING
 } from '../constants/action';
 import {
     BLOG,
@@ -13,7 +15,9 @@ import {
     GET_BLOGS,
     GET_MORE_BLOGS,
     GET_BLOG_BY_ID,
-    creation_success
+    EDIT_BLOG,
+    creation_success,
+    edition_success
 } from '../constants/blog';
 import { success } from '../constants/alert';
 import { FormDataProp } from '../interfaces/blog';
@@ -22,15 +26,15 @@ import handleError from '../functions/error';
 
 export const createBlog = (formData: FormDataProp, navigate: any) => async (dispatch: Dispatch<BlogAction | AlertAction>) => {
     try {
-        dispatch({ type: START_LOADING, for: BLOG });
+        dispatch({ type: START_MINI_LOADING, for: BLOG });
         const { data } = await api.createBlog(formData);
         dispatch({ type: CREATE_BLOG, data });
-        dispatch({ type: END_LOADING, for: BLOG });
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
         showAlert(creation_success, success, dispatch);
         navigate('/blogs');
         
     } catch (error) {
-        dispatch({ type: END_LOADING, for: BLOG });
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
         handleError(error, dispatch);
     }
 };
@@ -67,6 +71,21 @@ export const getBlogById = (id: string) => async (dispatch: Dispatch<BlogAction 
         
     } catch (error) {
         dispatch({ type: END_LOADING, for: BLOG });
+        handleError(error, dispatch);
+    }
+};
+
+export const editBlog = (id: string, formData: FormDataProp, navigate: any) => async (dispatch: Dispatch<BlogAction | AlertAction>) => {
+    try {
+        dispatch({ type: START_MINI_LOADING, for: BLOG });
+        const { data } = await api.editBlog(id, formData);
+        dispatch({ type: EDIT_BLOG, data });
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
+        showAlert(edition_success, success, dispatch);
+        navigate('/blogs');
+        
+    } catch (error) {
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
         handleError(error, dispatch);
     }
 };
