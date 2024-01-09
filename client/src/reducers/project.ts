@@ -12,7 +12,8 @@ import {
     GET_MORE_PROJECTS,
     GET_PROJECT_BY_ID,
     REMOVE_SELECTED_PROJECT,
-    EDIT_PROJECT
+    EDIT_PROJECT,
+    DELETE_PROJECT
 } from "../constants/project";
 
 const initialState = {
@@ -65,6 +66,11 @@ const projectReducer = (state: State = initialState, action: Action) => {
             return {
                 ...state,
                 projects: state.projects.map((project) => project._id.toString() === (action?.data as ProjectType)?._id?.toString() ? action?.data : project)
+            };
+        case DELETE_PROJECT:
+            return {
+                ...state,
+                projects: state.projects.filter((project) => project._id.toString() !== action?.data)
             };
         default:
             return state;

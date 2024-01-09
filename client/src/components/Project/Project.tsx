@@ -9,7 +9,7 @@ import ConfirmBox from '../Admin/ConfirmBox';
 import DeleteLoader from '../Loader/DeleteLoader';
 import { admin } from '../../constants/util';
 import { State } from '../../interfaces/store';
-import { deleteBlog } from '../../actions/blog';
+import { deleteProject } from '../../actions/project';
 import { ProjectProp } from '../../interfaces/project';
 
 const Project: React.FC<ProjectProp> = ({
@@ -38,7 +38,7 @@ const Project: React.FC<ProjectProp> = ({
     const handleDeleteConfirm = () => {
         setIsDeleting(true);
         setShowConfirmBox(false);
-        dispatch(deleteBlog(id));
+        dispatch(deleteProject(id));
     };
     const handleOutsideClick = (e: any) => {
         if (optionsRef.current && !optionsRef.current.contains(e.target)) {

@@ -82,3 +82,20 @@ export const editProject = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
     }
 };
+
+export const deleteProject = async (req, res) => {
+    try {
+        const { userId } = req;
+        const { id: projectId } = req.params;
+        const user = await User.findById(userId);
+        if(user.type !== "admin") return res.status(403).json({ message: "Admin permissions required" });
+        if(!ObjectId.isValid(projectId)) return res.status(404).json({ message: "Project not found" });
+        const project = await Project.findById(projectId);
+        if(!project) return res.status(404).json({ message: "Project not found" });
+        await Project.findByIdAndDelete(projectId);
+        res.status(200).json({ message: "Project deleted successfully" });
+
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+};

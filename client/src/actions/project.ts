@@ -28,15 +28,15 @@ import handleError from '../functions/error';
 
 export const addProject = (formData: FormDataProp, navigate: any) => async (dispatch: Dispatch<ProjectAction | AlertAction>) => {
     try {
-        dispatch({ type: START_LOADING, for: PROJECT });
+        dispatch({ type: START_MINI_LOADING, for: PROJECT });
         const { data } = await api.addProject(formData);
         dispatch({ type: ADD_PROJECT, data });
-        dispatch({ type: END_LOADING, for: PROJECT });
+        dispatch({ type: END_MINI_LOADING, for: PROJECT });
         showAlert(addition_success, success, dispatch);
         navigate('/projects');
         
     } catch (error) {
-        dispatch({ type: END_LOADING, for: PROJECT });
+        dispatch({ type: END_MINI_LOADING, for: PROJECT });
         handleError(error, dispatch);
     }
 };
@@ -85,6 +85,20 @@ export const editProject = (id: string, formData: FormDataProp, navigate: any) =
         dispatch({ type: END_MINI_LOADING, for: PROJECT });
         showAlert(edition_success, success, dispatch);
         navigate('/projects');
+        
+    } catch (error) {
+        dispatch({ type: END_MINI_LOADING, for: PROJECT });
+        handleError(error, dispatch);
+    }
+};
+
+export const deleteProject = (id: string) => async (dispatch: Dispatch<ProjectAction | AlertAction>) => {
+    try {
+        dispatch({ type: START_MINI_LOADING, for: PROJECT });
+        await api.deleteProject(id);
+        dispatch({ type: DELETE_PROJECT, data: id });
+        dispatch({ type: END_MINI_LOADING, for: PROJECT });
+        showAlert(deletion_success, success, dispatch);
         
     } catch (error) {
         dispatch({ type: END_MINI_LOADING, for: PROJECT });
