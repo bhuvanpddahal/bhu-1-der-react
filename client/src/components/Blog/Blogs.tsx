@@ -17,9 +17,7 @@ const Blogs: React.FC = () => {
     };
 
     useEffect(() => {
-        if (!fetched) {
-            dispatch(getBlogs(1, limit));
-        }
+        if (!fetched) dispatch(getBlogs(1, limit));
     }, []);
 
     const { isLoading, fetched, blogs, page, limit, totalPages } = useSelector((state: State) => state.blog);
@@ -46,6 +44,7 @@ const Blogs: React.FC = () => {
                                 title={blog?.title}
                                 description={blog?.description}
                                 createdAt={blog?.createdAt}
+                                dispatch={dispatch}
                             />
                         ))}
                     </InfiniteScroll>

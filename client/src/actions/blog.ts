@@ -16,8 +16,10 @@ import {
     GET_MORE_BLOGS,
     GET_BLOG_BY_ID,
     EDIT_BLOG,
+    DELETE_BLOG,
     creation_success,
-    edition_success
+    edition_success,
+    deletion_success
 } from '../constants/blog';
 import { success } from '../constants/alert';
 import { FormDataProp } from '../interfaces/blog';
@@ -83,6 +85,20 @@ export const editBlog = (id: string, formData: FormDataProp, navigate: any) => a
         dispatch({ type: END_MINI_LOADING, for: BLOG });
         showAlert(edition_success, success, dispatch);
         navigate('/blogs');
+        
+    } catch (error) {
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
+        handleError(error, dispatch);
+    }
+};
+
+export const deleteBlog = (id: string) => async (dispatch: Dispatch<BlogAction | AlertAction>) => {
+    try {
+        dispatch({ type: START_MINI_LOADING, for: BLOG });
+        await api.deleteBlog(id);
+        dispatch({ type: DELETE_BLOG, data: id });
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
+        showAlert(deletion_success, success, dispatch);
         
     } catch (error) {
         dispatch({ type: END_MINI_LOADING, for: BLOG });

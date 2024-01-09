@@ -61,3 +61,20 @@ export const editBlog = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
     }
 };
+
+export const deleteBlog = async (req, res) => {
+    try {
+        const { userId } = req;
+        const { id: blogId } = req.params;
+        const user = await User.findById(userId);
+        if(user.type !== "admin") return res.status(403).json({ message: "Admin permissions required" });
+        if(!ObjectId.isValid(blogId)) return res.status(404).json({ message: "Blog not found" });
+        const blog = await Blog.findById(blogId);
+        if(!blog) return res.status(404).json({ message: "Blog not found" });
+        await Blog.findByIdAndDelete(blogId);
+        res.status(200).json({ message: "Blog deleted successfully" });
+
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+};

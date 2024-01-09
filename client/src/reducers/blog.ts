@@ -12,7 +12,8 @@ import {
     GET_MORE_BLOGS,
     GET_BLOG_BY_ID,
     REMOVE_SELECTED_BLOG,
-    EDIT_BLOG
+    EDIT_BLOG,
+    DELETE_BLOG
 } from "../constants/blog";
 
 const initialState = {
@@ -65,6 +66,11 @@ const blogReducer = (state: State = initialState, action: Action) => {
             return {
                 ...state,
                 blogs: state.blogs.map((blog) => blog._id.toString() === (action?.data as BlogType)?._id?.toString() ? action?.data : blog)
+            };
+        case DELETE_BLOG:
+            return {
+                ...state,
+                blogs: state.blogs.filter((blog) => blog._id.toString() !== action?.data)
             };
         default:
             return state;

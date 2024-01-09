@@ -6,15 +6,18 @@ import moment from 'moment';
 
 import Options from '../Admin/Options';
 import ConfirmBox from '../Admin/ConfirmBox';
+import DeleteLoader from '../Loader/DeleteLoader';
 import { admin } from '../../constants/util';
 import { State } from '../../interfaces/store';
+import { deleteBlog } from '../../actions/blog';
 import { BlogProp } from '../../interfaces/blog';
 
 const Blog: React.FC<BlogProp> = ({
     id,
     title,
     description,
-    createdAt
+    createdAt,
+    dispatch
 }: BlogProp) => {
     const navigate = useNavigate();
     const optionsRef = useRef<HTMLDivElement>(null);
@@ -32,8 +35,9 @@ const Blog: React.FC<BlogProp> = ({
         setShowConfirmBox(true);
     };
     const handleDeleteConfirm = () => {
-        console.log('delete confirmed');
+        setIsDeleting(true);
         setShowConfirmBox(false);
+        dispatch(deleteBlog(id));
     };
     const handleOutsideClick = (e: any) => {
         if (optionsRef.current && !optionsRef.current.contains(e.target)) {
@@ -49,6 +53,8 @@ const Blog: React.FC<BlogProp> = ({
     }, []);
 
     const { user } = useSelector((state: State) => state.auth);
+    const { isMiniLoading } = useSelector((state: State) => state.blog);
+    if(isDeleting && isMiniLoading) return <DeleteLoader />
 
     return (
         <li className='bg-white px-7 pt-5 pb-8 rounded-xl shadow-large'>

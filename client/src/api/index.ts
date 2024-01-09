@@ -22,6 +22,7 @@ export const createBlog = (formData: BlogFormData) => API.post('/blogs', formDat
 export const getBlogs = (page: number, limit: number) => API.get(`/blogs?page=${page}&limit=${limit}`);
 export const getBlogById = (id: string) => API.get(`/blogs/${id}`);
 export const editBlog = (id: string, formData: BlogFormData) => API.patch(`/blogs/${id}`, formData);
+export const deleteBlog = (id: string) => API.delete(`/blogs/${id}`);
 
 export const addProject = (formData: ProjectFormData) => API.post('/projects', formData);
 export const getProjects = (page: number, limit: number) => API.get(`/projects?page=${page}&limit=${limit}`);

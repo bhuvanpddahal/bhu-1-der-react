@@ -34,7 +34,7 @@ export interface ManyData {
     totalPages: number;
 }
 
-type Data = BlogType | ManyData;
+type Data = string | BlogType | ManyData;
 
 export interface Action {
     type: string;
@@ -44,4 +44,5 @@ export interface Action {
 
 export interface BlogProp extends BlogInit {
     id: string;
+    dispatch: any;
 }
