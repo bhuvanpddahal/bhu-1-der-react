@@ -11,7 +11,7 @@ export const signup = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
         const type = email === process.env.ADMIN ? "admin" : "user";
-        const pictureIndex = Math.floor(Math.random() * 6);
+        const pictureIndex = type === "user" ? Math.floor(Math.random() * 6) : 6;
         const newUser = await User.create({ username, email, password: hashedPassword, type, pictureIndex });
         const token = jwt.sign({ email, id: newUser._id }, process.env.SECRET_KEY);
         res.status(200).json({ user: newUser, token });

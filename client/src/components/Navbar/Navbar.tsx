@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
                         user={user}
                     />
                 </ul>
-                <div className='hidden md:flex gap-4'>
+                <div className='hidden md:flex items-center gap-4'>
                     <NavLinks
                         setShowMenu={setShowMenu}
                         pathname={location.pathname}
