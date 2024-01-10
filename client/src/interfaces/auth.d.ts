@@ -18,6 +18,7 @@ interface UserType {
     email: string;
     password: string;
     type: string;
+    pictureIndex: number;
     joinedAt: string;
 }
 

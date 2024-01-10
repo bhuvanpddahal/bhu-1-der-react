@@ -91,6 +91,7 @@ export const commentOnBlog = async (req, res) => {
         const newComment = {
             userId: user._id,
             username: user.username,
+            pictureIndex: user.pictureIndex,
             comment
         };
         blog.comments.push(newComment);
@@ -115,6 +116,7 @@ export const replyOnComment = async (req, res) => {
         const newReply = {
             userId: user._id,
             username: user.username,
+            pictureIndex: user.pictureIndex,
             reply
         };
         blog.comments = blog.comments.map((comment) => {

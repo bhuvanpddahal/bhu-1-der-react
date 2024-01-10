@@ -17,6 +17,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    pictureIndex: {
+        type: Number,
+        required: true
+    },
     joinedAt: {
         type: Date,
         default: new Date()

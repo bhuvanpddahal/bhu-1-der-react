@@ -27,6 +27,7 @@ interface BlogInit {
 interface Reply {
     userId: ObjectId;
     username: string;
+    pictureIndex: number;
     reply: string;
 }
 
@@ -34,6 +35,7 @@ interface Comment {
     _id: ObjectId;
     userId: ObjectId;
     username: string;
+    pictureIndex: number;
     comment: string;
     replies: Reply[];
 }
@@ -97,6 +99,7 @@ export interface RepliesProp {
 
 export interface ReplyProp {
     username: string;
+    pictureIndex: number;
     reply: string;
     isLast: boolean;
 }

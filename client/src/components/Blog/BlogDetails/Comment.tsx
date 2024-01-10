@@ -3,7 +3,7 @@ import { X } from 'react-feather';
 
 import Replies from './Replies';
 import CommentInput from './CommentInput';
-import Img from '../../../images/assets/intelligence.avif';
+import { pictures } from '../../../data/auth';
 import { CommentProp } from '../../../interfaces/blog';
 import { replyOnComment } from '../../../actions/blog';
 
@@ -31,7 +31,7 @@ const Comment: React.FC<CommentProp> = ({
     return (
         <li className={!isLast ? 'border-b border-solid border-grey pb-5 mb-5' : ''}>
             <div className='flex items-center gap-2'>
-                <img className='h-40px w-40px rounded-full object-cover' src={Img} alt="" />
+                <img className='h-40px w-40px rounded-full object-cover' src={pictures[comment?.pictureIndex]} alt="" />
                 <h4 className='font-medium text-15px'>{comment?.username}</h4>
             </div>
             <div className='ml-50px mt-n5px'>

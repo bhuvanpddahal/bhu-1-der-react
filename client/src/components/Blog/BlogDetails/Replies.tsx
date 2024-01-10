@@ -10,6 +10,7 @@ const Replies: React.FC<RepliesProp> = ({ replies }: RepliesProp) => {
                 <Reply
                     key={index}
                     username={reply?.username}
+                    pictureIndex={reply?.pictureIndex}
                     reply={reply?.reply}
                     isLast={index === replies?.length - 1}
                 />

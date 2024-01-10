@@ -13,11 +13,13 @@ const BlogSchema = new mongoose.Schema({
         type: [{
             userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
             username: { type: String, required: true },
+            pictureIndex: { type: Number, required: true },
             comment: { type: String, required: true },
             replies: {
                 type: [{
                     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
                     username: { type: String, required: true },
+                    pictureIndex: { type: Number, required: true },
                     reply: { type: String, required: true }
                 }],
                 default: []
