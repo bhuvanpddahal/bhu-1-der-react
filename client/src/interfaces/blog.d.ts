@@ -68,5 +68,14 @@ export interface CommentsProp {
 
 export interface CommentProp {
     comment: Comment;
+    isMiniLoading: boolean;
     isLast: boolean;
+}
+
+export interface CommentInputProp {
+    isMiniLoading: boolean;
+    type: string;
+    state: string;
+    setter: React.Dispatch<React.SetStateAction<string>>;
+    handler: () => void;
 }
