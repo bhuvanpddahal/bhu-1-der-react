@@ -4,6 +4,8 @@ import Card from './Card';
 import { cards } from '../../data/contact';
 
 const Contact: React.FC = () => {
+    document.title = 'Contact | bhu-1-der';
+    
     return (
         <div className='bg-lightgrey min-h-rem flex justify-center pt-3 pb-7 px-3'>
             <div className='max-w-4xl w-full'>

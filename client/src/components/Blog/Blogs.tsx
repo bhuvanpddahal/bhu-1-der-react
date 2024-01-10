@@ -17,6 +17,7 @@ const Blogs: React.FC = () => {
     };
 
     useEffect(() => {
+        document.title = 'Blogs | bhu-1-der';
         if (!fetched) dispatch(getBlogs(1, limit));
     }, []);
 

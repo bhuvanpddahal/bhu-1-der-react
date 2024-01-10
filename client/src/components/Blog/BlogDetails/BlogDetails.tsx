@@ -16,6 +16,7 @@ const BlogDetails: React.FC = () => {
     const dispatch: any = useDispatch();
 
     useEffect(() => {
+        document.title = 'Blog Details | bhu-1-der';
         dispatch(getBlogById(id || ''));
         return () => {
             dispatch({ type: REMOVE_SELECTED_BLOG });

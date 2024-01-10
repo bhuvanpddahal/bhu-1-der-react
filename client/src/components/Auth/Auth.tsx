@@ -16,6 +16,7 @@ const Auth: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const isLogin = location.pathname.includes('/login');
+    document.title = `${isLogin ? 'Log In' : 'Sign Up'} | bhu-1-der`;
 
     const handleSubmit = (e: any) => {
         e.preventDefault();

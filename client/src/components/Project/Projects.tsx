@@ -17,6 +17,7 @@ const Projects: React.FC = () => {
     };
 
     useEffect(() => {
+        document.title = 'Projects | bhu-1-der';
         if (!fetched) {
             dispatch(getProjects(1, limit));
         }

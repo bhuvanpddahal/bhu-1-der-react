@@ -15,6 +15,7 @@ const ProjectDetails: React.FC = () => {
     const dispatch: any = useDispatch();
 
     useEffect(() => {
+        document.title = 'Project Details | bhu-1-der';
         dispatch(getProjectById(id || ''));
         return () => {
             dispatch({ type: REMOVE_SELECTED_PROJECT });
