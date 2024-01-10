@@ -5,6 +5,7 @@ import CommentInput from './CommentInput';
 import Img from '../../../images/assets/intelligence.avif';
 import { CommentProp } from '../../../interfaces/blog';
 import { replyOnComment } from '../../../actions/blog';
+import Replies from './Replies';
 
 const Comment: React.FC<CommentProp> = ({
     blogId,
@@ -13,9 +14,13 @@ const Comment: React.FC<CommentProp> = ({
     dispatch,
     isLast
 }: CommentProp) => {
-    const [isReplying, setIsReplying] = useState(false);
     const [reply, setReply] = useState('');
+    const [isReplying, setIsReplying] = useState(false);
+    const [showReplies, setShowReplies] = useState(false);
 
+    const toggleShowReplies = () => {
+        setShowReplies((prevShowReplies) => !prevShowReplies);
+    };
     const handleReply = () => {
         setIsReplying(true);
         dispatch(replyOnComment(blogId, comment._id.toString(), reply, setReply));
@@ -30,6 +35,11 @@ const Comment: React.FC<CommentProp> = ({
             </div>
             <div className='ml-50px mt-n5px'>
                 <p className='text-dark text-15px line-clamp-3'>{comment?.comment}</p>
+                {showReplies && (
+                    <Replies
+                        replies={comment?.replies}
+                    />
+                )}
                 <div className='flex items-center justify-between text-15px mt-2'>
                     {isReplying ? (
                         <>
@@ -46,7 +56,7 @@ const Comment: React.FC<CommentProp> = ({
                         <>
                             <button onClick={() => setIsReplying(true)} className='px-4 py-9px bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark'>Reply</button>
                             {comment?.replies?.length > 0 && (
-                                <button className='px-4 py-9px text-medium font-medium rounded-sm transition-bg duration-300 hover:bg-lightgrey'>View all replies</button>
+                                <button onClick={toggleShowReplies} className='px-4 py-9px text-medium font-medium rounded-sm transition-bg duration-300 hover:bg-lightgrey'>{showReplies ? 'Hide' : 'View'} all replies</button>
                             )}
                         </>
                     )}

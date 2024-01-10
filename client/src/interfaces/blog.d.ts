@@ -87,3 +87,13 @@ export interface CommentInputProp {
     setter: React.Dispatch<React.SetStateAction<string>>;
     handler: () => void;
 }
+
+export interface RepliesProp {
+    replies: Reply[];
+}
+
+export interface ReplyProp {
+    username: string;
+    reply: string;
+    isLast: boolean;
+}

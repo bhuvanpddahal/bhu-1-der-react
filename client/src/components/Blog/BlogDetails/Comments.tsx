@@ -15,9 +15,12 @@ const Comments: React.FC<CommentsProp> = ({
 }: CommentsProp) => {
     const dispatch: any = useDispatch();
     const [comment, setComment] = useState('');
+    const [isCommenting, setIsCommenting] = useState(false);
 
     const handleComment = () => {
+        setIsCommenting(true);
         if(comment.trim()) dispatch(commentOnBlog(id, comment.trim(), setComment));
+        setIsCommenting(false);
     };
 
     const { user } = useSelector((state: State) => state.auth);
@@ -32,7 +35,7 @@ const Comments: React.FC<CommentsProp> = ({
                 </div>
                 {user ? (
                     <CommentInput
-                        isMiniLoading={isMiniLoading}
+                        isMiniLoading={isCommenting && isMiniLoading}
                         type='comment'
                         state={comment}
                         setter={setComment}

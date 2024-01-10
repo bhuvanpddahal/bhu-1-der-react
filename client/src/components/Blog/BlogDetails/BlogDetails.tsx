@@ -23,8 +23,6 @@ const BlogDetails: React.FC = () => {
     }, []);
 
     const { isLoading, selectedBlog } = useSelector((state: State) => state.blog);
-    console.log(selectedBlog);
-    
     if(isLoading) return <Loader />
     if(!selectedBlog) return <NotFound message='Blog not found' />
 
