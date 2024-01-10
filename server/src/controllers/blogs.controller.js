@@ -89,14 +89,42 @@ export const commentOnBlog = async (req, res) => {
         const blog = await Blog.findById(blogId);
         if(!blog) return res.status(404).json({ message: "Blog not found" });
         const newComment = {
-            id: user._id,
+            userId: user._id,
             username: user.username,
-            comment,
-            replies: []
+            comment
         };
         blog.comments.push(newComment);
         await blog.save();
-        res.status(200).json(newComment);
+        res.status(200).json(blog.comments[blog.comments.length - 1]);
+
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+};
+
+export const replyOnComment = async (req, res) => {
+    try {
+        const { userId } = req;
+        const { reply } = req.body;
+        const { commentId } = req.query;
+        const { id: blogId } = req.params;
+        const user = await User.findById(userId);
+        if(!ObjectId.isValid(blogId)) return res.status(404).json({ message: "Blog not found" });
+        const blog = await Blog.findById(blogId);
+        if(!blog) return res.status(404).json({ message: "Blog not found" });
+        const newReply = {
+            userId: user._id,
+            username: user.username,
+            reply
+        };
+        blog.comments = blog.comments.map((comment) => {
+            if(comment._id.toString() === commentId) {
+                comment.replies.push(newReply);
+            }
+            return comment;
+        });
+        await blog.save();
+        return res.status(200).json(newReply);
 
     } catch (error) {
         res.status(500).json({ message: "Something went wrong" });

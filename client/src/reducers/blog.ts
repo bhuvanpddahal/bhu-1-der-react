@@ -1,4 +1,4 @@
-import { ManyData, BlogType, State, Action } from '../interfaces/blog';
+import { ManyData, BlogType, State, Action, ReplyOnComment } from '../interfaces/blog';
 import {
     START_LOADING,
     END_LOADING,
@@ -14,7 +14,8 @@ import {
     REMOVE_SELECTED_BLOG,
     EDIT_BLOG,
     DELETE_BLOG,
-    COMMENT_ON_BLOG
+    COMMENT_ON_BLOG,
+    REPLY_ON_COMMENT
 } from "../constants/blog";
 
 const initialState = {
@@ -76,7 +77,23 @@ const blogReducer = (state: State = initialState, action: Action) => {
         case COMMENT_ON_BLOG:
             return {
                 ...state,
-                selectedBlog: { ...state.selectedBlog, comments: [action?.data, ...(state.selectedBlog as BlogType)?.comments] }
+                selectedBlog: {
+                    ...state.selectedBlog,
+                    comments: [action?.data, ...(state.selectedBlog as BlogType)?.comments]
+                }
+            };
+        case REPLY_ON_COMMENT:
+            return {
+                ...state,
+                selectedBlog: {
+                    ...state.selectedBlog,
+                    comments: state.selectedBlog?.comments.map((comment) => {
+                        if(comment._id.toString() === (action?.data as ReplyOnComment)?.commentId) {
+                            comment.replies.push((action?.data as ReplyOnComment)?.reply);
+                        }
+                        return comment;
+                    })
+                }
             };
         default:
             return state;

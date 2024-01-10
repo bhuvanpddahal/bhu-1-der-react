@@ -47,8 +47,10 @@ const Comments: React.FC<CommentsProp> = ({
                     comments?.map((comment, index) => (
                         <Comment
                             key={index}
+                            blogId={id}
                             comment={comment}
                             isMiniLoading={isMiniLoading}
+                            dispatch={dispatch}
                             isLast={index === comments?.length - 1}
                         />
                     ))

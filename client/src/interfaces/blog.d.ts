@@ -23,13 +23,14 @@ interface BlogInit {
 }
 
 interface Reply {
-    id: ObjectId;
+    userId: ObjectId;
     username: string;
     reply: string;
 }
 
 interface Comment {
-    id: ObjectId;
+    _id: ObjectId;
+    userId: ObjectId;
     username: string;
     comment: string;
     replies: Reply[];
@@ -48,7 +49,12 @@ export interface ManyData {
     totalPages: number;
 }
 
-type Data = string | Comment | BlogType | ManyData;
+export interface ReplyOnComment {
+    commentId: string;
+    reply: Reply;
+}
+
+type Data = string | Comment | ReplyOnComment | BlogType | ManyData;
 
 export interface Action {
     type: string;
@@ -67,8 +73,10 @@ export interface CommentsProp {
 }
 
 export interface CommentProp {
+    blogId: string;
     comment: Comment;
     isMiniLoading: boolean;
+    dispatch: any;
     isLast: boolean;
 }
 

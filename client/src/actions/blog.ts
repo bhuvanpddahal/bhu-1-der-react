@@ -18,6 +18,7 @@ import {
     EDIT_BLOG,
     DELETE_BLOG,
     COMMENT_ON_BLOG,
+    REPLY_ON_COMMENT,
     creation_success,
     edition_success,
     deletion_success,
@@ -116,6 +117,20 @@ export const commentOnBlog = (id: string, comment: string, setComment: React.Dis
         dispatch({ type: END_MINI_LOADING, for: BLOG });
         showAlert(comment_success, success, dispatch);
         setComment('');
+        
+    } catch (error) {
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
+        handleError(error, dispatch);
+    }
+};
+
+export const replyOnComment = (blogId: string, commentId: string, reply: string, setReply: React.Dispatch<React.SetStateAction<string>>) => async (dispatch: Dispatch<BlogAction | AlertAction>) => {
+    try {
+        dispatch({ type: START_MINI_LOADING, for: BLOG });
+        const { data } = await api.replyOnComment(blogId, commentId, reply);
+        dispatch({ type: REPLY_ON_COMMENT, data: { commentId, reply: data } });
+        dispatch({ type: END_MINI_LOADING, for: BLOG });
+        setReply('');
         
     } catch (error) {
         dispatch({ type: END_MINI_LOADING, for: BLOG });

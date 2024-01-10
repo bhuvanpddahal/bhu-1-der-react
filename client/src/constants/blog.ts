@@ -8,6 +8,7 @@ export const REMOVE_SELECTED_BLOG = "REMOVE_SELECTED_BLOG";
 export const EDIT_BLOG = "EDIT_BLOG";
 export const DELETE_BLOG = "DELETE_BLOG";
 export const COMMENT_ON_BLOG = "COMMENT_ON_BLOG";
+export const REPLY_ON_COMMENT = "REPLY_ON_COMMENT";
 
 export const creation_success = "Blog created successfully";
 export const edition_success = "Blog edited successfully";

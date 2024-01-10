@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
 import { X } from 'react-feather';
 
+import CommentInput from './CommentInput';
 import Img from '../../../images/assets/intelligence.avif';
 import { CommentProp } from '../../../interfaces/blog';
-import CommentInput from './CommentInput';
+import { replyOnComment } from '../../../actions/blog';
 
 const Comment: React.FC<CommentProp> = ({
+    blogId,
     comment,
     isMiniLoading,
+    dispatch,
     isLast
 }: CommentProp) => {
     const [isReplying, setIsReplying] = useState(false);
     const [reply, setReply] = useState('');
 
     const handleReply = () => {
-
+        setIsReplying(true);
+        dispatch(replyOnComment(blogId, comment._id.toString(), reply, setReply));
+        setIsReplying(false);
     };
 
     return (

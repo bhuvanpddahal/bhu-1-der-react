@@ -11,12 +11,12 @@ const BlogSchema = new mongoose.Schema({
     },
     comments: {
         type: [{
-            id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+            userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
             username: { type: String, required: true },
             comment: { type: String, required: true },
             replies: {
                 type: [{
-                    id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+                    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
                     username: { type: String, required: true },
                     reply: { type: String, required: true }
                 }],
