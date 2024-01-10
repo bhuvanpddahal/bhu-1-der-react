@@ -28,7 +28,7 @@ const Comments: React.FC<CommentsProp> = ({
 
     return (
         <div className='shadow-large rounded-xl bg-white'>
-            <header className='p-7 border-b border-solid border-grey'>
+            <header className='px-7 py-5 border-b border-solid border-grey'>
                 <div className='flex items-center justify-between mb-2'>
                     <h3 className='font-medium'>Comments</h3>
                     <p className='font-semibold text-dark'>{comments?.length}</p>
@@ -45,7 +45,7 @@ const Comments: React.FC<CommentsProp> = ({
                     <div className='text-center text-medium'>You must be logged in to comment</div>
                 )}
             </header>
-            <ul className='p-7'>
+            <ul className='px-7 pt-5 pb-7'>
                 {comments?.length ? (
                     comments?.map((comment, index) => (
                         <Comment

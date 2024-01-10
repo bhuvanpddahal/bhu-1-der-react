@@ -9,8 +9,8 @@ import { admin } from '../../constants/util';
 import { State } from '../../interfaces/store';
 
 const Admin: React.FC = () => {
+    document.title = 'Admin | bhu-1-der';
     const { user } = useSelector((state: State) => state.auth);
-
     if(user?.type !== admin) return <NotFound message='Page not found' />
 
     return (

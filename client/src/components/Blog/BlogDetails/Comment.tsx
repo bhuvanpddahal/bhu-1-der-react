@@ -29,7 +29,7 @@ const Comment: React.FC<CommentProp> = ({
     };
 
     return (
-        <li className={!isLast ? 'border-b border-solid border-grey pb-5 mb-5' : ''}>
+        <li className={!isLast ? 'border-b border-solid border-grey pb-3 mb-5' : ''}>
             <div className='flex items-center gap-2'>
                 <img className='h-40px w-40px rounded-full object-cover' src={pictures[comment?.pictureIndex]} alt="" />
                 <h4 className='font-medium text-15px'>{comment?.username}</h4>

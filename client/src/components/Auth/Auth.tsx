@@ -50,14 +50,14 @@ const Auth: React.FC = () => {
         <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>
             <div className='flex max-w-4xl rounded-xl overflow-hidden shadow-large'>
                 <img className='hidden md:inline-block w-1/2 object-cover' src={SignImg} alt="" />
-                <div className='w-full flex flex-col items-center pt-3 pb-5 px-5 bg-white'>
+                <div className='w-full flex flex-col items-center pt-5 pb-7 px-7 bg-white'>
                     <img className='h-60px' src={Logo} alt="bhu-1-der" />
                     <h4 className='text-md font-semibold text-normal'>{isLogin ? 'Welcome back!' : 'Create an acount!'}</h4>
                     <button className='px-3 py-1 border border-solid border-darkgrey rounded-md mt-2 mb-1'>{isLogin ? 'Login' : 'Signup'} with Google</button>
                     <p className='w-full flex items-center justify-center h-1px my-5 bg-grey'>
                         <span className='text-sm px-3 bg-white text-darkgrey'>OR {isLogin ? 'LOGIN' : 'SIGNUP'} WITH EMAIL</span>
                     </p>
-                    <form onSubmit={handleSubmit} className='w-full mb-2'>
+                    <form onSubmit={handleSubmit} className='w-full mb-3'>
                         {!isLogin && (
                             <div className='mb-2'>
                                 <label className='font-medium' htmlFor="username">Username</label>
@@ -68,7 +68,7 @@ const Auth: React.FC = () => {
                             <label className='font-medium' htmlFor="email">Email Address</label>
                             <input onChange={(e) => setEmail(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' type="email" name="email" id="email" value={email} required />
                         </div>
-                        <div className='mb-3'>
+                        <div className='mb-4'>
                             <label className='font-medium' htmlFor="password">Password</label>
                             <input onChange={(e) => setPassword(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' type="password" name="password" id="password" value={password} required />
                         </div>

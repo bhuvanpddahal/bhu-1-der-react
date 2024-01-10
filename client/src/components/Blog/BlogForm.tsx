@@ -57,7 +57,7 @@ const BlogForm: React.FC = () => {
 
     return (
         <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>
-            <form onSubmit={handleSubmit} className='max-w-2xl w-full shadow-large bg-white rounded-lg p-5'>
+            <form onSubmit={handleSubmit} className='max-w-2xl w-full shadow-large bg-white rounded-lg px-6 pt-4 pb-6'>
                 <h1 className='text-lg font-medium text-center text-dark mb-4'>{id ? 'Edit blog' : 'Create a blog'}</h1>
                 <div className='mb-3'>
                     <label className='font-medium' htmlFor="title">Title</label>

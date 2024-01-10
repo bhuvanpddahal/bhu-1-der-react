@@ -57,7 +57,7 @@ const Blog: React.FC<BlogProp> = ({
     if(isDeleting && isMiniLoading) return <DeleteLoader />
 
     return (
-        <li className='bg-white px-7 pt-5 pb-8 rounded-xl shadow-large'>
+        <li className='bg-white px-7 pt-5 pb-7 rounded-xl shadow-large'>
             {showConfrimBox && (
                 <ConfirmBox
                     type='blog'

@@ -57,7 +57,7 @@ const Project: React.FC<ProjectProp> = ({
     if(isDeleting && isMiniLoading) return <DeleteLoader />
 
     return (
-        <li className='bg-white px-7 pt-7 pb-8 rounded-xl shadow-large'>
+        <li className='bg-white p-7 rounded-xl shadow-large'>
             {showConfrimBox && (
                 <ConfirmBox
                     type='project'

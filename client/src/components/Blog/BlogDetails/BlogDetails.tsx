@@ -31,7 +31,7 @@ const BlogDetails: React.FC = () => {
         <div className='bg-lightgrey min-h-rem flex justify-center pt-3 pb-10 px-3'>
             <div className='max-w-3xl w-full'>
                 <h3 className='text-2xl font-medium text-center text-dark mb-4 mt-n10px'>Blog Details</h3>
-                <div className='shadow-large rounded-xl bg-white p-7 mb-5'>
+                <div className='shadow-large rounded-xl bg-white px-7 pt-5 pb-6 mb-5'>
                     <p className='text-darkgrey flex items-center justify-end gap-1'>
                         <Clock size={20} className='inline' />
                         <span className='text-sm'>{moment(selectedBlog?.createdAt).format('LL')}</span>
