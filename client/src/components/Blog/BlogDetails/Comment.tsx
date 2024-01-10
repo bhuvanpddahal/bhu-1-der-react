@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { X } from 'react-feather';
 
+import Replies from './Replies';
 import CommentInput from './CommentInput';
 import Img from '../../../images/assets/intelligence.avif';
 import { CommentProp } from '../../../interfaces/blog';
 import { replyOnComment } from '../../../actions/blog';
-import Replies from './Replies';
 
 const Comment: React.FC<CommentProp> = ({
+    user,
     blogId,
     comment,
     isMiniLoading,
@@ -34,13 +35,13 @@ const Comment: React.FC<CommentProp> = ({
                 <h4 className='font-medium text-15px'>{comment?.username}</h4>
             </div>
             <div className='ml-50px mt-n5px'>
-                <p className='text-dark text-15px line-clamp-3'>{comment?.comment}</p>
+                <p className='text-dark text-15px line-clamp-3 mb-2'>{comment?.comment}</p>
                 {showReplies && (
                     <Replies
                         replies={comment?.replies}
                     />
                 )}
-                <div className='flex items-center justify-between text-15px mt-2'>
+                <div className={`flex items-center ${user ? 'justify-between' : 'justify-end'} text-15px mt-2`}>
                     {isReplying ? (
                         <>
                             <CommentInput
@@ -54,7 +55,9 @@ const Comment: React.FC<CommentProp> = ({
                         </>
                     ) : (
                         <>
-                            <button onClick={() => setIsReplying(true)} className='px-4 py-9px bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark'>Reply</button>
+                            {user && (
+                                <button onClick={() => setIsReplying(true)} className='px-4 py-9px bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark'>Reply</button>
+                            )}
                             {comment?.replies?.length > 0 && (
                                 <button onClick={toggleShowReplies} className='px-4 py-9px text-medium font-medium rounded-sm transition-bg duration-300 hover:bg-lightgrey'>{showReplies ? 'Hide' : 'View'} all replies</button>
                             )}

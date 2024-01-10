@@ -36,6 +36,7 @@ const Blogs: React.FC = () => {
                         loader={<MiniLoader />}
                         scrollThreshold={'0px'}
                         className='grid grid-cols-1 md:grid-cols-2 gap-5'
+                        style={{ overflow: 'visible' }}
                     >
                         {blogs.map((blog) => (
                             <Blog

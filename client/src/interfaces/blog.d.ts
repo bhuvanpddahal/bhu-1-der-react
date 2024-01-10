@@ -1,5 +1,7 @@
 import { ObjectId } from 'mongodb';
 
+import { User } from './auth';
+
 export interface FormDataProp {
     title: string;
     description: string;
@@ -73,6 +75,7 @@ export interface CommentsProp {
 }
 
 export interface CommentProp {
+    user: User;
     blogId: string;
     comment: Comment;
     isMiniLoading: boolean;

@@ -50,6 +50,7 @@ const Comments: React.FC<CommentsProp> = ({
                     comments?.map((comment, index) => (
                         <Comment
                             key={index}
+                            user={user}
                             blogId={id}
                             comment={comment}
                             isMiniLoading={isMiniLoading}
