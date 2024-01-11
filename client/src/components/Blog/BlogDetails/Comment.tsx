@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { X } from 'react-feather';
 
 import Replies from './Replies';
@@ -45,27 +46,44 @@ const Comment: React.FC<CommentProp> = ({
                     )}
                 </AnimatePresence>
                 <div className={`flex items-center ${user ? 'justify-between' : 'justify-end'} text-15px mt-2`}>
-                    {isReplying ? (
-                        <>
-                            <CommentInput
-                                isMiniLoading={isMiniLoading}
-                                type='reply'
-                                state={reply}
-                                setter={setReply}
-                                handler={handleReply}
-                            />
-                            <X onClick={() => setIsReplying(false)} color='#333' size={36} className='p-2 cursor-pointer rounded-full transition-bg duration-300 hover:bg-lightgrey' />
-                        </>
-                    ) : (
-                        <>
-                            {user && (
-                                <button onClick={() => setIsReplying(true)} className='px-4 py-9px bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark'>Reply</button>
-                            )}
-                            {comment?.replies?.length > 0 && (
-                                <button onClick={toggleShowReplies} className='px-4 py-9px text-medium font-medium rounded-sm transition-bg duration-300 hover:bg-lightgrey'>{showReplies ? 'Hide' : 'View'} all replies</button>
-                            )}
-                        </>
-                    )}
+                    <AnimatePresence>
+                        {isReplying ? (
+                            <>
+                                <CommentInput
+                                    isMiniLoading={isMiniLoading}
+                                    type='reply'
+                                    state={reply}
+                                    setter={setReply}
+                                    handler={handleReply}
+                                />
+                                <X
+                                    onClick={() => setIsReplying(false)}
+                                    color='#333'
+                                    size={36}
+                                    className='p-2 cursor-pointer rounded-full transition-bg duration-300 hover:bg-lightgrey'
+                                />
+                            </>
+                        ) : (
+                            <>
+                                {user && (
+                                    <button
+                                        onClick={() => setIsReplying(true)}
+                                        className='px-4 py-9px bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark'
+                                    >
+                                        Reply
+                                    </button>
+                                )}
+                                {comment?.replies?.length > 0 && (
+                                    <button
+                                        onClick={toggleShowReplies}
+                                        className='px-4 py-9px text-medium font-medium rounded-sm transition-bg duration-300 hover:bg-lightgrey'
+                                    >
+                                        {showReplies ? 'Hide' : 'View'} all replies
+                                    </button>
+                                )}
+                            </>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
         </li>

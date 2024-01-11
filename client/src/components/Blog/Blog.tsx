@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
 import { Clock } from 'react-feather';
 import moment from 'moment';
 
@@ -58,7 +59,12 @@ const Blog: React.FC<BlogProp> = ({
     if(isDeleting && isMiniLoading) return <DeleteLoader />
 
     return (
-        <li className='bg-white px-7 pt-5 pb-7 rounded-xl shadow-large'>
+        <motion.li
+            className='bg-white px-7 pt-5 pb-7 rounded-xl shadow-large'
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+        >
             <AnimatePresence>
                 {showConfrimBox && (
                     <ConfirmBox
@@ -88,7 +94,7 @@ const Blog: React.FC<BlogProp> = ({
                     />
                 )}
             </div>
-        </li>
+        </motion.li>
     )
 };
 

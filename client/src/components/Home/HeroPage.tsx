@@ -29,7 +29,7 @@ const HeroPage: React.FC = () => {
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 1.5 }}
                 >
-                    <Link to='/auth' className='px-9 py-4 bg-white rounded-sm shadow-sm transition-bg duration-300 hover:bg-dim'>
+                    <Link to='/get-started' className='px-9 py-4 bg-white rounded-sm shadow-sm transition-bg duration-300 hover:bg-dim'>
                         <Play color='#333' className='inline' /> Get Started
                     </Link>
                     <Link to='https://www.github.com/BhuvanPdDahal' className='px-9 py-4 bg-white rounded-sm shadow-sm transition-bg duration-300 hover:bg-dim' target='_blank'>
