@@ -7,7 +7,7 @@ const Expertise: React.FC = () => {
                 <span className='text-3xl px-5 bg-lightgrey font-medium text-dark'>Expertise</span>
             </h2>
             <div className='absolute inset-0 bg-expert bg-contain bg-no-repeat bg-center opacity-20'></div>
-            <div className='relative z-10 max-w-3xl mx-auto text-center leading-10 text-dark'>Passionate and innovative software engineer with a keen eye for creative solutions. With a solid foundation in coding and a love for problem-solving, I thrive in crafting elegant and efficient software solutions. My journey in the tech world is fueled by a relentless pursuit of knowledge and a commitment to delivering high-quality results. From conceptualizing ideas to bringing them to life through code, I bring a unique blend of technical expertise and creative flair to every project. Let's embark on a journey to transform ideas into reality through the power of code and imagination.</div>
+            <div className='relative z-10 max-w-3xl mx-auto text-center leading-10 text-dark'>As a seasoned software engineer, I bring proficiency in designing and developing robust, scalable solutions. My skills encompass Full-Stack Development, Programming Languages including but not limited to JavaScript, C, and C++, Web Technologies, Databases, DevOps Practices, Problem Solving. In addition to technical expertise, my collaborative approach and effective communication skills facilitate seamless teamwork and project success. With a commitment to staying at the forefront of technological advancements, I am dedicated to delivering high-quality software solutions that meet the needs of both users and businesses.</div>
         </div>
     )
 };

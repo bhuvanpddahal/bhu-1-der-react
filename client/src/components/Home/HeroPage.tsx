@@ -1,6 +1,7 @@
 import React from 'react';
-import { Play, GitHub } from 'react-feather';
 import { Link } from 'react-router-dom';
+import { Play, GitHub } from 'react-feather';
+import { motion, useInView } from 'framer-motion';
 
 import HeroImg from '../../images/assets/hero.avif';
 
