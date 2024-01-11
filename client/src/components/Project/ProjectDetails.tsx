@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Clock } from 'react-feather';
 import moment from 'moment';
 
@@ -28,7 +29,12 @@ const ProjectDetails: React.FC = () => {
 
     return (
         <div className='bg-lightgrey min-h-rem flex justify-center pt-3 pb-10 px-3'>
-            <div className='max-w-3xl w-full'>
+            <motion.div
+                className='max-w-3xl w-full'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
                 <h3 className='text-2xl font-medium text-center text-dark mb-4 mt-n10px'>Project Details</h3>
                 <div className='shadow-large rounded-xl bg-white px-7 pt-7 pb-8'>
                     <img className='w-full h-300px object-cover mb-3 rounded-md' src={selectedProject?.image} alt="" />
@@ -40,7 +46,7 @@ const ProjectDetails: React.FC = () => {
                     <p className='text-normal mt-2 mb-6'>{selectedProject?.description}</p>
                     <Link className='px-4 py-2 bg-primary text-white rounded-sm transition-bg duration-300 hover:bg-primarydark' to={selectedProject?.link} target='_blank'>See code</Link>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 };

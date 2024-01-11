@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import moment from 'moment';
-import { Clock } from 'react-feather';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Clock } from 'react-feather';
+import moment from 'moment';
 
 import Comments from './Comments';
 import Loader from '../../Loader/Loader';
@@ -29,7 +30,12 @@ const BlogDetails: React.FC = () => {
 
     return (
         <div className='bg-lightgrey min-h-rem flex justify-center pt-3 pb-10 px-3'>
-            <div className='max-w-3xl w-full'>
+            <motion.div
+                className='max-w-3xl w-full'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
                 <h3 className='text-2xl font-medium text-center text-dark mb-4 mt-n10px'>Blog Details</h3>
                 <div className='shadow-large rounded-xl bg-white px-7 pt-5 pb-6 mb-5'>
                     <p className='text-darkgrey flex items-center justify-end gap-1'>
@@ -43,7 +49,7 @@ const BlogDetails: React.FC = () => {
                     id={selectedBlog?._id?.toString()}
                     comments={selectedBlog?.comments}
                 />
-            </div>
+            </motion.div>
         </div>
     )
 };

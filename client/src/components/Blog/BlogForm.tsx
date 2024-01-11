@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { FilePlus, Edit } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -57,7 +58,13 @@ const BlogForm: React.FC = () => {
 
     return (
         <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>
-            <form onSubmit={handleSubmit} className='max-w-2xl w-full shadow-large bg-white rounded-lg px-6 pt-4 pb-6'>
+            <motion.form
+                onSubmit={handleSubmit}
+                className='max-w-2xl w-full shadow-large bg-white rounded-lg px-6 pt-4 pb-6'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
                 <h1 className='text-lg font-medium text-center text-dark mb-4'>{id ? 'Edit blog' : 'Create a blog'}</h1>
                 <div className='mb-3'>
                     <label className='font-medium' htmlFor="title">Title</label>
@@ -74,7 +81,7 @@ const BlogForm: React.FC = () => {
                         <><FilePlus size={22} className='inline' /> {isMiniLoading ? 'Creating...' : 'Create'}</>
                     )}
                 </button>
-            </form>
+            </motion.form>
         </div>
     )
 };
