@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { jwtDecode } from 'jwt-decode';
 
 import Logo from '../../images/logos/main-logo.png';
 import SignImg from '../../images/assets/sign.avif';
@@ -25,15 +27,21 @@ const Auth: React.FC = () => {
             email,
             password
         };
-        if(isLogin) {
+        if (isLogin) {
             dispatch(login(formData, navigate));
         } else {
             dispatch(signup(formData, navigate));
         }
     };
-
+    const handleGoogleLoginSuccess = (response: CredentialResponse) => {
+        const decoded = jwtDecode(response.credential || '');
+        // TODO - Login the user with Google account
+    };
+    const handleGoogleLoginError = () => {
+        // TODO - Display error message
+    };
     const handleClick = () => {
-        if(isLogin) {
+        if (isLogin) {
             navigate('/get-started');
         } else {
             navigate('/login');
@@ -52,8 +60,11 @@ const Auth: React.FC = () => {
                 <img className='hidden md:inline-block w-1/2 object-cover' src={SignImg} alt="" />
                 <div className='w-full flex flex-col items-center pt-5 pb-7 px-7 bg-white'>
                     <img className='h-60px' src={Logo} alt="bhu-1-der" />
-                    <h4 className='text-md font-semibold text-normal'>{isLogin ? 'Welcome back!' : 'Create an acount!'}</h4>
-                    <button className='px-3 py-1 border border-solid border-darkgrey rounded-md mt-2 mb-1'>{isLogin ? 'Login' : 'Signup'} with Google</button>
+                    <h4 className='text-md font-semibold text-normal mb-1'>{isLogin ? 'Welcome back!' : 'Create an acount!'}</h4>
+                    <GoogleLogin
+                        onSuccess={handleGoogleLoginSuccess}
+                        onError={handleGoogleLoginError}
+                    />
                     <p className='w-full flex items-center justify-center h-1px my-5 bg-grey'>
                         <span className='text-sm px-3 bg-white text-darkgrey'>OR {isLogin ? 'LOGIN' : 'SIGNUP'} WITH EMAIL</span>
                     </p>
@@ -73,7 +84,7 @@ const Auth: React.FC = () => {
                             <input onChange={(e) => setPassword(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' type="password" name="password" id="password" value={password} required />
                         </div>
                         <button className={`w-full py-2 bg-primary text-white font-medium rounded-sm transition-bg duration-300 ${isLoading ? 'cursor-not-allowed' : 'hover:bg-primarydark'}`} type="submit" disabled={isLoading}>
-                            {isLogin 
+                            {isLogin
                                 ? isLoading ? 'Loggin in...' : 'Login'
                                 : isLoading ? 'Signing up...' : 'Signup'
                             }

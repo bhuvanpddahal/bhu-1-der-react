@@ -3,4 +3,5 @@
 /server/node_modules
 
 # local env file
+/client/.env
 /server/.env
