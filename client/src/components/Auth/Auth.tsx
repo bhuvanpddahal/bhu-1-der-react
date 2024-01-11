@@ -3,12 +3,13 @@ import { GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { jwtDecode } from 'jwt-decode';
+import { motion } from 'framer-motion';
 
 import Logo from '../../images/logos/main-logo.png';
 import SignImg from '../../images/assets/sign.avif';
-import { signup, login } from '../../actions/auth';
 import { LOGOUT } from '../../constants/auth';
 import { State } from '../../interfaces/store';
+import { signup, login } from '../../actions/auth';
 
 const Auth: React.FC = () => {
     const location = useLocation();
@@ -56,11 +57,16 @@ const Auth: React.FC = () => {
 
     return (
         <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>
-            <div className='flex max-w-4xl rounded-xl overflow-hidden shadow-large'>
+            <motion.div
+                className='flex max-w-4xl rounded-xl overflow-hidden shadow-large'
+                initial={{ translateY: '-100%', opacity: 0 }}
+                animate={{ translateY: '0%', opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
                 <img className='hidden md:inline-block w-1/2 object-cover' src={SignImg} alt="" />
                 <div className='w-full flex flex-col items-center pt-5 pb-7 px-7 bg-white'>
                     <img className='h-60px' src={Logo} alt="bhu-1-der" />
-                    <h4 className='text-md font-semibold text-normal mb-1'>{isLogin ? 'Welcome back!' : 'Create an acount!'}</h4>
+                    <h4 className='text-md font-medium text-medium mb-1'>{isLogin ? 'Welcome back!' : 'Create an acount!'}</h4>
                     <GoogleLogin
                         onSuccess={handleGoogleLoginSuccess}
                         onError={handleGoogleLoginError}
@@ -92,7 +98,7 @@ const Auth: React.FC = () => {
                     </form>
                     <button onClick={handleClick} className='w-full py-2 text-sm font-medium border border-solid border-grey rounded-sm transition-bg duration-300 hover:bg-lightgrey'>OR {isLogin ? 'SIGNUP' : 'LOGIN'}</button>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 };
