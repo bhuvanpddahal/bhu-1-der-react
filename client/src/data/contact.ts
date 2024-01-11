@@ -18,3 +18,18 @@ export const cards = [
         link: "https://www.github.com/BhuvanPdDahal"
     }
 ];
+
+export const initials = [
+    {
+        translateX: '-100%',
+        translateY: '0%'
+    },
+    {
+        translateX: '0%',
+        translateY: '100%'
+    },
+    {
+        translateX: '100%',
+        translateY: '0%'
+    }
+];

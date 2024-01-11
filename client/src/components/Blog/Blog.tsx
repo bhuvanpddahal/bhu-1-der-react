@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { Clock } from 'react-feather';
 import moment from 'moment';
@@ -58,15 +59,17 @@ const Blog: React.FC<BlogProp> = ({
 
     return (
         <li className='bg-white px-7 pt-5 pb-7 rounded-xl shadow-large'>
-            {showConfrimBox && (
-                <ConfirmBox
-                    type='blog'
-                    title={title}
-                    description={description}
-                    setShowConfirmBox={setShowConfirmBox}
-                    handleDeleteConfirm={handleDeleteConfirm}
-                />
-            )}
+            <AnimatePresence>
+                {showConfrimBox && (
+                    <ConfirmBox
+                        type='blog'
+                        title={title}
+                        description={description}
+                        setShowConfirmBox={setShowConfirmBox}
+                        handleDeleteConfirm={handleDeleteConfirm}
+                    />
+                )}
+            </AnimatePresence>
             <p className='text-darkgrey flex items-center justify-end gap-1'>
                 <Clock size={20} className='inline' />
                 <span className='text-sm'>{moment(createdAt).format('LL')}</span>

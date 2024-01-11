@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { useSelector } from 'react-redux';
-import { Clock } from 'react-feather';
-import moment from 'moment';
 
 import Options from '../Admin/Options';
 import ConfirmBox from '../Admin/ConfirmBox';
@@ -58,15 +57,17 @@ const Project: React.FC<ProjectProp> = ({
 
     return (
         <li className='bg-white p-7 rounded-xl shadow-large'>
-            {showConfrimBox && (
-                <ConfirmBox
-                    type='project'
-                    title={title}
-                    description={description}
-                    setShowConfirmBox={setShowConfirmBox}
-                    handleDeleteConfirm={handleDeleteConfirm}
-                />
-            )}
+            <AnimatePresence>
+                {showConfrimBox && (
+                    <ConfirmBox
+                        type='project'
+                        title={title}
+                        description={description}
+                        setShowConfirmBox={setShowConfirmBox}
+                        handleDeleteConfirm={handleDeleteConfirm}
+                    />
+                )}
+            </AnimatePresence>
             <img className='w-full h-200px object-cover mb-3 rounded-md' src={image} alt="" />
             <h2 className='font-semibold text-lg text-dark line-clamp-2'>{title}</h2>
             <p className='text-normal mt-2 mb-6 line-clamp-3'>{description}</p>
