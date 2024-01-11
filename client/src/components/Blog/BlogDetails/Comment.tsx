@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { X } from 'react-feather';
 
 import Replies from './Replies';
@@ -36,11 +37,13 @@ const Comment: React.FC<CommentProp> = ({
             </div>
             <div className='ml-50px mt-n5px'>
                 <p className='text-dark text-15px line-clamp-3 mb-2'>{comment?.comment}</p>
-                {showReplies && (
-                    <Replies
-                        replies={comment?.replies}
-                    />
-                )}
+                <AnimatePresence>
+                    {showReplies && (
+                        <Replies
+                            replies={comment?.replies}
+                        />
+                    )}
+                </AnimatePresence>
                 <div className={`flex items-center ${user ? 'justify-between' : 'justify-end'} text-15px mt-2`}>
                     {isReplying ? (
                         <>

@@ -1,11 +1,17 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import Reply from './Reply';
 import { RepliesProp } from '../../../interfaces/blog';
 
 const Replies: React.FC<RepliesProp> = ({ replies }: RepliesProp) => {
     return (
-        <ul>
+        <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+        >
             {replies?.map((reply, index) => (
                 <Reply
                     key={index}
@@ -15,7 +21,7 @@ const Replies: React.FC<RepliesProp> = ({ replies }: RepliesProp) => {
                     isLast={index === replies?.length - 1}
                 />
             ))}
-        </ul>
+        </motion.ul>
     )
 };
 
