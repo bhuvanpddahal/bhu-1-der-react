@@ -7,17 +7,22 @@ import Logo from '../../images/logos/main-logo.png';
 
 const Footer: React.FC = () => {
     return (
-        <motion.div
-            className='flex items-center justify-between pl-3 pr-10 shadow-medium'
-            initial={{ translateY: '100%', opacity: 0 }}
-            whileInView={{ translateY: '0%', opacity: 1 }}
-            transition={{ duration: 1 }}
-        >
-            <div className='flex items-center'>
+        <div className='flex items-center justify-between pl-3 pr-10 shadow-medium overflow-hidden'>
+            <motion.div
+                className='flex items-center'
+                initial={{ translateY: '100%', opacity: 0 }}
+                whileInView={{ translateY: '0%', opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
                 <img className='h-60px pr-4 border-r border-solid border-darkgrey' src={Logo} alt="bhu-1-der" />
                 <div className='mx-4 text-normal'>Copyright © 2024 bhu-1-der.com</div>
-            </div>
-            <div className='text-darkgrey flex gap-3'>
+            </motion.div>
+            <motion.div
+                className='text-darkgrey flex gap-3'
+                initial={{ translateY: '100%', opacity: 0 }}
+                whileInView={{ translateY: '0%', opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
                 <Link className='transition-color duration-200 hover:text-normal' to='https://www.facebook.com' target='_blank'>
                     <Facebook />
                 </Link>
@@ -27,8 +32,8 @@ const Footer: React.FC = () => {
                 <Link className='transition-color duration-200 hover:text-normal' to='https://www.github.com' target='_blank'>
                     <GitHub />
                 </Link>
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
     )
 };
 
