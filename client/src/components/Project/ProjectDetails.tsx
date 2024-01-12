@@ -28,7 +28,7 @@ const ProjectDetails: React.FC = () => {
     if(!selectedProject) return <NotFound message='Project not found' />
 
     return (
-        <div className='bg-lightgrey min-h-rem flex justify-center pt-3 pb-10 px-3'>
+        <div className='bg-lightgrey min-h-smrem md:min-h-mdrem flex justify-center pt-3 pb-10 px-3'>
             <motion.div
                 className='max-w-3xl w-full'
                 initial={{ opacity: 0 }}

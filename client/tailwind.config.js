@@ -10,7 +10,9 @@ module.exports = {
                 "2px": "2px",
                 "9px": "9px",
                 "15px": "15px",
+                "21px": "21px",
                 "22px": "22px",
+                "24px": "24px",
                 "30px": "30px",
                 "40px": "40px",
                 "50px": "50px",
@@ -18,6 +20,7 @@ module.exports = {
                 "70px": "70px",
                 "100px": "100px",
                 "110px": "110px",
+                "140px": "140px",
                 "160px": "160px",
                 "200px": "200px",
                 "300px": "300px",
@@ -44,6 +47,8 @@ module.exports = {
             },
             fontSize: {
                 "15px": "15px",
+                "16px": "16px",
+                "17px": "17px",
                 "18px": "18px",
                 "20px": "20px",
                 "22px": "22px",
@@ -57,7 +62,8 @@ module.exports = {
                 "bg": "background-color",
             },
             minHeight: {
-                "rem": "calc(100vh - 144px)",
+                "smrem": "calc(100vh - 124px)",
+                "mdrem": "calc(100vh - 144px)",
             },
             lineHeight: {
                 "50px": "55px",
@@ -65,6 +71,9 @@ module.exports = {
             boxShadow: {
                 "medium": "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
                 "large": "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+            },
+            screens: {
+                "xs": "520px",
             }
         },
     },

@@ -57,7 +57,7 @@ const Project: React.FC<ProjectProp> = ({
     if(isDeleting && isMiniLoading) return <DeleteLoader />
 
     return (
-        <motion.li className='bg-white p-7 rounded-xl shadow-large'
+        <motion.li className='bg-white p-6 sm:p-7 rounded-xl shadow-large'
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}

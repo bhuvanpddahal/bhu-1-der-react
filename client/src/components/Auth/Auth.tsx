@@ -56,7 +56,7 @@ const Auth: React.FC = () => {
     const { isLoading } = useSelector((state: State) => state.auth);
 
     return (
-        <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>
+        <div className='bg-lightgrey min-h-smrem md:min-h-mdrem flex items-center justify-center pt-3 pb-10 px-3'>
             <motion.div
                 className='flex max-w-4xl rounded-xl overflow-hidden shadow-large'
                 initial={{ translateY: '-100%', opacity: 0 }}
@@ -65,7 +65,7 @@ const Auth: React.FC = () => {
             >
                 <img className='hidden md:inline-block w-1/2 object-cover' src={SignImg} alt="" />
                 <div className='w-full flex flex-col items-center pt-5 pb-7 px-7 bg-white'>
-                    <img className='h-60px' src={Logo} alt="bhu-1-der" />
+                    <img className='h-50px md:h-60px' src={Logo} alt="bhu-1-der" />
                     <h4 className='text-md font-medium text-medium mb-1'>{isLogin ? 'Welcome back!' : 'Create an acount!'}</h4>
                     <GoogleLogin
                         onSuccess={handleGoogleLoginSuccess}

@@ -60,12 +60,12 @@ const BlogForm: React.FC = () => {
         <div className='bg-lightgrey min-h-rem flex items-center justify-center pt-3 pb-10 px-3'>
             <motion.form
                 onSubmit={handleSubmit}
-                className='max-w-2xl w-full shadow-large bg-white rounded-lg px-6 pt-4 pb-6'
+                className='max-w-2xl w-full shadow-large bg-white rounded-lg px-5 sm:px-6 pt-3 sm:pt-4 pb-5 sm:pb-6'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
             >
-                <h1 className='text-lg font-medium text-center text-dark mb-4'>{id ? 'Edit blog' : 'Create a blog'}</h1>
+                <h1 className='text-17px sm:text-lg font-semibold text-center text-normal mb-3 sm:mb-4'>{id ? 'Edit blog' : 'Create a blog'}</h1>
                 <div className='mb-3'>
                     <label className='font-medium' htmlFor="title">Title</label>
                     <input onChange={(e) => setTitle(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' name='title' id='title' type="text" value={title} required />

@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema({
     },
     type: {
         type: String,
+        enum: ['user', 'admin'],
         required: true
     },
     pictureIndex: {

@@ -16,7 +16,7 @@ const HeroPage: React.FC = () => {
         >
             <div className='w-full'>
                 <motion.h3
-                    className='text-4xl leading-50px text-dark font-light'
+                    className='text-3xl md:text-4xl leading-50px text-dark font-light'
                     initial={{ opacity: 0, translateX: '-100%' }}
                     whileInView={{ opacity: 1, translateX: '0%' }}
                     transition={{ duration: 1 }}
@@ -24,7 +24,7 @@ const HeroPage: React.FC = () => {
                     Hello, I'm <span className='text-primarydark'>Bhuvan Prasad Dahal</span> from Nepal.
                 </motion.h3>
                 <motion.div
-                    className='flex items-center gap-3 flex-wrap mt-4'
+                    className='flex gap-3 flex-wrap mt-4'
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 1.5 }}
@@ -38,7 +38,7 @@ const HeroPage: React.FC = () => {
                 </motion.div>
             </div>
             <motion.img 
-                className='shrink h-300px lg:h-380px hidden md:inline-block rounded-lg'
+                className='shrink w-1/2 h-full object-cover hidden md:inline-block rounded-lg'
                 src={HeroImg}
                 alt="img"
                 initial={{ opacity: 0, translateX: '100%' }}

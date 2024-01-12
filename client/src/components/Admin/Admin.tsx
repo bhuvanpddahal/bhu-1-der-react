@@ -15,9 +15,9 @@ const Admin: React.FC = () => {
     if(user?.type !== admin) return <NotFound message='Page not found' />
 
     return (
-        <div className='bg-lightgrey min-h-rem flex flex-col items-center justify-center gap-6 pt-3 pb-10 px-3'>
+        <div className='bg-lightgrey min-h-smrem md:min-h-mdrem flex flex-col items-center justify-center gap-6 pt-3 pb-10 px-3'>
             <motion.img
-                className='h-160px'
+                className='h-140px md:h-160px'
                 src={AdminImg}
                 alt="admin"
                 initial={{ opacity: 0 }}

@@ -60,7 +60,7 @@ const Blog: React.FC<BlogProp> = ({
 
     return (
         <motion.li
-            className='bg-white px-7 pt-5 pb-7 rounded-xl shadow-large'
+            className='bg-white px-6 sm:px-7 pt-4 sm:pt-5 pb-6 sm:pb-7 rounded-xl shadow-large'
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
