@@ -22,7 +22,7 @@ app.use(bodyParser.json({ limit: '30mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
     origin: ["https://bhu-1-der-client.vercel.app"],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true
 }));
 
