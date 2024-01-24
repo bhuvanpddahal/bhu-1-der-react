@@ -29,6 +29,7 @@ module.exports = {
                 "n5px": "-5px",
                 "n10px": "-10px",
                 "10p": "10%",
+                "40p": "40%",
                 "55p": "55%",
             },
             colors: {
@@ -66,7 +67,8 @@ module.exports = {
                 "mdrem": "calc(100vh - 144px)",
             },
             lineHeight: {
-                "50px": "55px",
+                "40px": "40px",
+                "50px": "50px",
             },
             boxShadow: {
                 "medium": "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",

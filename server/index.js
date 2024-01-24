@@ -20,7 +20,11 @@ const port = process.env.PORT || 5000;
 // MIDDLEWARES
 app.use(bodyParser.json({ limit: '30mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+    origin: ["https://bhu-1-der.vercel.app"],
+    methods: ["GET", "POST"],
+    credentials: true
+}));
 
 // ROUTES
 app.use('/api/users', userRouter);

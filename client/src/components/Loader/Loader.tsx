@@ -4,7 +4,7 @@ import LoadingImg from '../../images/assets/loading.gif';
 
 const Loader: React.FC = () => {
     return (
-        <div className='min-h-rem flex flex-col items-center justify-center gap-2 py-5 bg-lightgrey'>
+        <div className='min-h-smrem md:min-h-mdrem flex flex-col items-center justify-center gap-2 py-5 bg-lightgrey'>
             <img className='h-60px' src={LoadingImg} alt="..." />
         </div>
     )
