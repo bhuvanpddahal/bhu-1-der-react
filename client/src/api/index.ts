@@ -4,7 +4,7 @@ import { FormDataProp as AuthFormData } from '../interfaces/auth';
 import { FormDataProp as BlogFormData } from '../interfaces/blog';
 import { FormDataProp as ProjectFormData } from '../interfaces/project';
 
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+const API = axios.create({ baseURL: 'https://bhu-1-der-server.vercel.app/api' });
 
 API.interceptors.request.use((req: any) => {
     const token = localStorage.getItem('bhu-1-derToken');
