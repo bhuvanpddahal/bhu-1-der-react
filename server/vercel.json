@@ -1,5 +1,5 @@
 {
-    "version": 1,
+    "version": 2,
     "builds": [
         { "src": "*.ts", "use": "@vercel/node" }
     ],
