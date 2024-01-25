@@ -78,16 +78,16 @@ const Auth: React.FC = () => {
                         {!isLogin && (
                             <div className='mb-2'>
                                 <label className='font-medium' htmlFor="username">Username</label>
-                                <input onChange={(e) => setUsername(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' type="text" name="username" id="username" value={username} required />
+                                <input onChange={(e) => setUsername(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none focus:border-primary' type="text" name="username" id="username" value={username} required />
                             </div>
                         )}
                         <div className='mb-2'>
                             <label className='font-medium' htmlFor="email">Email Address</label>
-                            <input onChange={(e) => setEmail(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' type="email" name="email" id="email" value={email} required />
+                            <input onChange={(e) => setEmail(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none focus:border-primary' type="email" name="email" id="email" value={email} required />
                         </div>
                         <div className='mb-4'>
                             <label className='font-medium' htmlFor="password">Password</label>
-                            <input onChange={(e) => setPassword(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' type="password" name="password" id="password" value={password} required />
+                            <input onChange={(e) => setPassword(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none focus:border-primary' type="password" name="password" id="password" value={password} required />
                         </div>
                         <button className={`w-full py-2 bg-primary text-white font-medium rounded-sm transition-bg duration-300 ${isLoading ? 'cursor-not-allowed' : 'hover:bg-primarydark'}`} type="submit" disabled={isLoading}>
                             {isLogin

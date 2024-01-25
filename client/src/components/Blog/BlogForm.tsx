@@ -68,11 +68,11 @@ const BlogForm: React.FC = () => {
                 <h1 className='text-17px sm:text-lg font-semibold text-center text-normal mb-3 sm:mb-4'>{id ? 'Edit blog' : 'Create a blog'}</h1>
                 <div className='mb-3'>
                     <label className='font-medium' htmlFor="title">Title</label>
-                    <input onChange={(e) => setTitle(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none' name='title' id='title' type="text" value={title} required />
+                    <input onChange={(e) => setTitle(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none focus:border-primary' name='title' id='title' type="text" value={title} required />
                 </div>
                 <div className='mb-3'>
                     <label className='font-medium' htmlFor="description">Description</label>
-                    <textarea onChange={(e) => setDescription(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none resize-none' name="description" id="description" value={description} cols={30} rows={10} required></textarea>
+                    <textarea onChange={(e) => setDescription(e.target.value)} className='w-full border border-solid border-grey px-3 py-2 rounded-sm outline-none resize-none focus:border-primary' name="description" id="description" value={description} cols={30} rows={10} required></textarea>
                 </div>
                 <button className={`w-full py-2 flex items-center justify-center gap-1 bg-primary text-white font-medium rounded-sm transition-bg duration-300 ${isLoading ? 'cursor-not-allowed' : 'hover:bg-primarydark'}`} type="submit" disabled={isLoading}>
                     {id ? (
