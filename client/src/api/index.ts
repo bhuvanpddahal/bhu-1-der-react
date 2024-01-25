@@ -4,6 +4,7 @@ import { FormDataProp as AuthFormData } from '../interfaces/auth';
 import { FormDataProp as BlogFormData } from '../interfaces/blog';
 import { FormDataProp as ProjectFormData } from '../interfaces/project';
 
+axios.defaults.withCredentials = true;
 const API = axios.create({ baseURL: 'https://bhu-1-der-server.vercel.app/api' });
 
 API.interceptors.request.use((req: any) => {
