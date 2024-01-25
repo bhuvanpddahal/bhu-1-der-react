@@ -8,7 +8,7 @@ interface NotFoundProp {
 
 const NotFound: React.FC<NotFoundProp> = ({ message }: NotFoundProp) => {
     return (
-        <div className='min-h-rem flex flex-col items-center justify-center gap-2 py-5 bg-lightgrey'>
+        <div className='min-h-smrem md:min-h-mdrem flex flex-col items-center justify-center gap-2 py-5 bg-lightgrey'>
             <img className='h-180px' src={NotFoundImg} alt="not-found" />
             <p className='text-dark'>{message}</p>
         </div>
